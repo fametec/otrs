@@ -69,9 +69,15 @@ expect eof
 echo "$SECURE_MYSQL"
 
 ## Download e Install OTRS
+if [ -z otrs-6.0.6-01.noarch.rpm ]; then
+  
+  yum -y install otrs-6.0.6-01.noarch.rpm
 
-yum -y install otrs-6.0.6-01.noarch.rpm
+else 
+  
+  yum -y install http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-6.0.6-01.noarch.rpm
 
+fi
 
 ## Configurando o Bando de dados
 
@@ -92,3 +98,16 @@ su - otrs -c '/opt/otrs/bin/Cron.sh start'
 
 systemctl enable httpd
 systemctl restart httpd
+
+
+
+## ITSM module
+
+cd /tmp
+
+wget -c http://ftp.otrs.org/pub/otrs/itsm/bundle6/ITSM-6.0.6.opm
+
+su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.6.opm'
+
+
+
