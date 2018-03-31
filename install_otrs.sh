@@ -82,8 +82,8 @@ sed -i s/'some-pass'/'q1w2E#R$'/g /opt/otrs/Kernel/Config.pm
 
 ## Iniciando serviço
 
-# su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
-# su - otrs -c '/opt/otrs/bin/Cron.sh start'
+su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
+su - otrs -c '/opt/otrs/bin/Cron.sh start'
 
 
 systemctl enable httpd
