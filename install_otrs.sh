@@ -3,7 +3,7 @@
 
 ## Desativar SELINUX
 
-sed -i s/enforcing/permissive/g /etc/selinux/config
+# sed -i s/enforcing/permissive/g /etc/selinux/config
 
 
 ## Instalar mariadb-server
@@ -31,15 +31,15 @@ systemctl restart mariadb
 
 # Criando database
 
-mysql -e "create database otrs"
-mysql -e "CREATE USER otrs@localhost IDENTIFIED BY 'q1w2E#R$';"
-mysql -e "GRANT ALL on otrs.* TO otrs@localhost;"
+# mysql -e "create database otrs"
+# mysql -e "CREATE USER otrs@localhost IDENTIFIED BY 'q1w2E#R$';"
+# mysql -e "GRANT ALL on otrs.* TO otrs@localhost;"
 
 
 ## Configuração de segurança do banco
 
 MYSQL_ROOT_PASSWORD=''
-MYSQL_NEW_ROOT_PASSWORD=''
+MYSQL_NEW_ROOT_PASSWORD='q1w2E#R$'
 SECURE_MYSQL=$(expect -c "
 set timeout 10
 spawn mysql_secure_installation
@@ -75,10 +75,16 @@ yum -y install http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-6.0.6-01.noarch.rpm
 
 sed -i s/'some-pass'/'q1w2E#R$'/g /opt/otrs/Kernel/Config.pm
 
+## Deploy database
+
+# mysql -u root -pq1w2E#R$ otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
+# mysql -u root -pq1w2E#R$ otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
+
 ## Iniciando serviço
 
-su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
-su - otrs -c '/opt/otrs/bin/Cron.sh start'
+# su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
+# su - otrs -c '/opt/otrs/bin/Cron.sh start'
 
 
-
+systemctl enable httpd
+systemctl restart httpd
