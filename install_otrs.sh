@@ -18,6 +18,8 @@ cat <<EOF > /etc/my.cnf.d/zotrs.cnf
 max_allowed_packet   = 64M
 query_cache_size     = 32M
 innodb_log_file_size = 256M
+character-set-server = utf8
+collation-server     = utf8_general_ci
 EOF
 
 rm -rf /var/lib/mysql/ib*
@@ -37,13 +39,18 @@ mysql -e "GRANT ALL on otrs.* TO otrs@localhost;"
 ## Configuração de segurança do banco
 
 MYSQL_ROOT_PASSWORD=''
+MYSQL_NEW_ROOT_PASSWORD=''
 SECURE_MYSQL=$(expect -c "
 set timeout 10
 spawn mysql_secure_installation
 expect \"Enter current password for root (enter for none):\"
 send \"$MYSQL_ROOT_PASSWORD\r\"
 expect \"Change the root password?\"
-send \"n\r\"
+send \"y\r\"
+expect \"New password:\"
+send \"$MYSQL_NEW_ROOT_PASSWORD\r\"
+expect \"Re-enter new password:\"
+send \"$MYSQL_NEW_ROOT_PASSWORD\r\" 
 expect \"Remove anonymous users?\"
 send \"y\r\"
 expect \"Disallow root login remotely?\"
