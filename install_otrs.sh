@@ -67,6 +67,7 @@ expect eof
 echo "$SECURE_MYSQL"
 
 ## Download e Install OTRS
+
 if [ -e otrs-6.0.6-01.noarch.rpm ]; then
   
   yum -y install otrs-6.0.6-01.noarch.rpm
@@ -86,9 +87,7 @@ ${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 
 ## Configurando o Bando de dados
 
-# $PASSWD = `su - otrs -c '/opt/otrs/bin/otrs.Console.pl Maint::Database::PasswordCrypt q1w2Q!W@'
-
-# sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
+sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 ## Deploy database
 
@@ -100,11 +99,9 @@ ${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
 su - otrs -c '/opt/otrs/bin/Cron.sh start'
 
-## Setando Admin Password
+## Set Admin Password
 
 # su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
-
-
 
 ## Restart httpd
 
@@ -124,11 +121,13 @@ su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install ITSM-6.0.6.o
 
 
 
+## Fim 
 
 echo "MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD"
 echo "MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD"
 echo ""
 echo "Login: otrs@localhost"
 echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
+
 
 
