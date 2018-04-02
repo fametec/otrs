@@ -5,7 +5,9 @@
 
 ## VARIAVEIS
 
-
+FQDN="suporte.eftech.com.br"
+ADMINEMAIL="suporte@eftech.com.br"
+ORGANIZATION="EF-TECH"
 MYSQL_ROOT_PASSWORD=''
 MYSQL_NEW_ROOT_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
 MYSQL_NEW_OTRS_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
@@ -123,23 +125,28 @@ systemctl enable httpd
 systemctl restart httpd
 
 
-## Fim 
+## CURL 
 
+# passo 1
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="License" -d submit="Submit" http://localhost/otrs/installer.pl
 
-
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction=License -d submit="Submit" http://localhost/otrs/installer.pl
-
+# passo 2
 curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="Start" -d submit="Accept license and continue" http://localhost/otrs/installer.pl
 
+# passo 3
 curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="DB" -d DBType="mysql" -d DBInstallType="UseDB" -d submit="FormDBSubmit" http://localhost/otrs/installer.pl
 
+# passo 4
 curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="DBCreate" -d DBType="mysql" -d InstallType="UseDB" -d DBUser="otrs" -d DBPassword="$MYSQL_NEW_OTRS_PASSWORD" -d DBHost="127.0.0.1" -d DBName="otrs" -d submit="FormDBSubmit" http://localhost/otrs/installer.pl 
 
+# passo 5
 curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="System" -d submit="Submit" http://localhost/otrs/installer.pl
 
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="ConfigureMail" -d SystemID="68" FQDN="localhost.localdomain" -d AdminEmail="support@yourhost.example.com" -d Organization="Example Company" -d LogModule="Kernel::System::Log::SysLog" -d LogModule::LogFile="/tmp/otrs.log" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
+# passo 6
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="ConfigureMail" -d SystemID="68" FQDN=$FQDN -d AdminEmail=$ADMINEMAIL -d Organization=$ORGANIZATION -d LogModule="Kernel::System::Log::SysLog" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
 
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="Finish" Skip="0" -d button="Skip this step" http://localhost/otrs/installer.pl
+# passo 7
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localhost/otrs/installer.pl
 
 
 
@@ -151,17 +158,46 @@ su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localh
 
 if [ ! -e ITSM-6.0.6.opm ]; then 
   
-  wget -c http://ftp.otrs.org/pub/otrs/itsm/bundle6/ITSM-6.0.6.opm -O ITSM-6.0.6.opm
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/itsm/bundle6/:ITSM-6.0.6.opm'
+
+else
+
+  cp ITSM-6.0.6.opm /tmp/
+
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.6.opm'
 
 fi
 
-cp ITSM-6.0.6.opm /tmp/
+## FAQ 
 
-su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.6.opm'
+if [ ! -e FAQ-6.0.5.opm ]; then
+
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/packages/:FAQ-6.0.5.opm'
+
+else 
+
+  cp FAQ-6.0.5.opm /tmp/
+
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/FAQ-6.0.5.opm'
+
+fi
+
+## TimeAccounting
+
+if [ ! -e TimeAccounting-6.0.3.opm ]; then
+
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/packages/:TimeAccounting-6.0.3.opm'
+
+else
+  
+  cp TimeAccounting-6.0.3.opm /tmp/
+
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/TimeAccounting-6.0.3.opm'
+
+fi
 
 
-
-
+## FIM
 
 echo ""
 echo ""
