@@ -127,15 +127,35 @@ systemctl restart httpd
 
 ## Fim 
 
+
+
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction=License -d submit="Submit" http://localhost/otrs/installer.pl
+
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="Start" -d submit="Accept license and continue" http://localhost/otrs/installer.pl
+
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="DB" -d DBType="mysql" -d DBInstallType="UseDB" -d submit="FormDBSubmit" http://localhost/otrs/installer.pl
+
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="DBCreate" -d DBType="mysql" -d InstallType="UseDB" -d DBUser="otrs" -d DBPassword="$MYSQL_NEW_OTRS_PASSWORD" -d DBHost="127.0.0.1" -d DBName="otrs" -d submit="FormDBSubmit" http://localhost/otrs/installer.pl 
+
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="System" -d submit="Submit" http://localhost/otrs/installer.pl
+
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="ConfigureMail" -d SystemID="68" FQDN="localhost.localdomain" -d AdminEmail="support@yourhost.example.com" -d Organization="Example Company" -d LogModule="Kernel::System::Log::SysLog" -d LogModule::LogFile="/tmp/otrs.log" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
+
+curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="Finish" Skip="0" -d button="Skip this step" http://localhost/otrs/installer.pl
+
+
+
+
+
 echo ""
 echo ""
 echo "MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD"
 echo ""
 echo "MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD"
 echo ""
-#echo "Login: otrs@localhost"
-#echo ""
-#echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
-#echo ""
+echo "Login: otrs@localhost"
+echo ""
+echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
+echo ""
 
 
