@@ -123,7 +123,7 @@ sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 $MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
 $MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
-$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.post.mysql.sql
+$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema-post.mysql.sql
 
 ## Iniciando serviço
 
