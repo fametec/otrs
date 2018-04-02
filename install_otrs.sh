@@ -79,6 +79,19 @@ else
 fi
 
 
+## Dependencias
+
+yum -y install "perl(Crypt::Eksblowfish::Bcrypt)"
+yum -y install "perl(JSON::XS)"
+yum -y install "perl(Mail::IMAPClient)"
+yum -y install "perl(Authen::NTLM)"
+yum -y install "perl(ModPerl::Util)"
+yum -y install "perl(Text::CSV_XS)"
+yum -y install "perl(YAML::XS)"
+
+
+
+
 #Next steps: 
 
 #[restart web server]
@@ -107,17 +120,17 @@ sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 ## Deploy database
 
-# $MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
-# $MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
+$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
+$MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
 
 ## Iniciando serviço
 
-# su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
-# su - otrs -c '/opt/otrs/bin/Cron.sh start'
+su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
+su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
 
 ## Set Admin Password
 
-# su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
+su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
 
 ## Restart httpd
 
@@ -133,7 +146,9 @@ if [ ! -e ITSM-6.0.6.opm ]; then
 
 fi
 
-# su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install ITSM-6.0.6.opm'
+cp ITSM-6.0.6.opm /tmp/
+
+su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.6.opm'
 
 
 
