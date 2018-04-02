@@ -9,12 +9,19 @@ FQDN="suporte.eftech.com.br"
 ADMINEMAIL="suporte@eftech.com.br"
 ORGANIZATION="EF-TECH"
 MYSQL_ROOT_PASSWORD=''
+DBUSER="otrs"
+DBHOST="127.0.0.1"
+DBNAME="otrs"
+SYSTEMID="`< /dev/urandom tr -dc 0-9 | head -c${1:-2};echo;`"
 MYSQL_NEW_ROOT_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
 MYSQL_NEW_OTRS_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
 
 ## CONSTANTES
 
 MYSQL="mysql -u root -p${MYSQL_NEW_ROOT_PASSWORD}"
+CURL='curl -d action="/otrs/installer.pl" -d Action="Installer'
+
+
 
 ## Desativar SELINUX
 
@@ -128,25 +135,25 @@ systemctl restart httpd
 ## CURL 
 
 # passo 1
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="License" -d submit="Submit" http://localhost/otrs/installer.pl
+$CURL -d Subaction="License" -d submit="Submit" http://localhost/otrs/installer.pl
 
 # passo 2
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="Start" -d submit="Accept license and continue" http://localhost/otrs/installer.pl
+$CURL -d Subaction="Start" -d submit="Accept license and continue" http://localhost/otrs/installer.pl
 
 # passo 3
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="DB" -d DBType="mysql" -d DBInstallType="UseDB" -d submit="FormDBSubmit" http://localhost/otrs/installer.pl
+$CURL -d Subaction="DB" -d DBType="mysql" -d DBInstallType="UseDB" -d submit="FormDBSubmit" http://localhost/otrs/installer.pl
 
 # passo 4
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="DBCreate" -d DBType="mysql" -d InstallType="UseDB" -d DBUser="otrs" -d DBPassword="$MYSQL_NEW_OTRS_PASSWORD" -d DBHost="127.0.0.1" -d DBName="otrs" -d submit="FormDBSubmit" http://localhost/otrs/installer.pl 
+$CURL -d Subaction="DBCreate" -d DBType="mysql" -d InstallType="UseDB" -d DBUser=$DBUSER -d DBPassword="$MYSQL_NEW_OTRS_PASSWORD" -d DBHost=$DBHOST -d DBName=$DBNAME -d submit="FormDBSubmit" http://localhost/otrs/installer.pl 
 
 # passo 5
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="System" -d submit="Submit" http://localhost/otrs/installer.pl
+$CURL -d Subaction="System" -d submit="Submit" http://localhost/otrs/installer.pl
 
 # passo 6
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="ConfigureMail" -d SystemID="68" FQDN=$FQDN -d AdminEmail=$ADMINEMAIL -d Organization=$ORGANIZATION -d LogModule="Kernel::System::Log::SysLog" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
+$CURL -d Subaction="ConfigureMail" -d SystemID=$SYSTEMID FQDN=$FQDN -d AdminEmail=$ADMINEMAIL -d Organization=$ORGANIZATION -d LogModule="Kernel::System::Log::SysLog" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
 
 # passo 7
-curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localhost/otrs/installer.pl
+$CURL -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localhost/otrs/installer.pl
 
 
 
