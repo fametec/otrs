@@ -121,9 +121,9 @@ sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 ## Deploy database
 
-$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
-$MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
-$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema-post.mysql.sql
+#$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
+#$MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
+#$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema-post.mysql.sql
 
 ## Iniciando serviço
 
@@ -132,7 +132,7 @@ su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
 
 ## Set Admin Password
 
-su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
+#su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
 
 ## Restart httpd
 
@@ -148,9 +148,9 @@ echo "MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD"
 echo ""
 echo "MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD"
 echo ""
-echo "Login: otrs@localhost"
-echo ""
-echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
-echo ""
+#echo "Login: otrs@localhost"
+#echo ""
+#echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
+#echo ""
 
 
