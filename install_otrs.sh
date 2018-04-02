@@ -5,12 +5,17 @@
 
 
 MYSQL_ROOT_PASSWORD=''
-MYSQL_NEW_ROOT_PASSWORD='q1w2E#R$'
+MYSQL_NEW_ROOT_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
+MYSQL_NEW_OTRS_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
+
+## CONSTANTES
+
+MYSQL=`mysql -u root -p${MYSQL_NEW_ROOT_PASSWORD}`
 
 ## Desativar SELINUX
 
 sed -i s/enforcing/permissive/g /etc/selinux/config
-
+setenforce 0
 
 ## Instalar mariadb-server
 
@@ -33,14 +38,6 @@ rm -rf /var/lib/mysql/ib*
 ## Restart do mysql
 
 systemctl restart mariadb
-
-
-# Criando database
-
-# mysql -e "create database otrs"
-# mysql -e "CREATE USER otrs@localhost IDENTIFIED BY 'q1w2E#R$';"
-# mysql -e "GRANT ALL on otrs.* TO otrs@localhost;"
-
 
 ## Configuração de segurança do banco
 
@@ -69,7 +66,7 @@ expect eof
 echo "$SECURE_MYSQL"
 
 ## Download e Install OTRS
-if [ -z otrs-6.0.6-01.noarch.rpm ]; then
+if [ -e otrs-6.0.6-01.noarch.rpm ]; then
   
   yum -y install otrs-6.0.6-01.noarch.rpm
 
@@ -79,35 +76,52 @@ else
 
 fi
 
+# Criando database
+
+${MYSQL} -e "create database otrs"
+${MYSQL} -e "CREATE USER \'otrs\'@\'localhost\' IDENTIFIED BY \'${MYSQL_NEW_OTRS_PASSWORD}\';"
+${MYSQL} -e "GRANT ALL on otrs.* TO \'otrs\'@\'localhost\';"
+
+
 ## Configurando o Bando de dados
 
-#$PASSWD = `su - otrs -c '/opt/otrs/bin/otrs.Console.pl Maint::Database::PasswordCrypt q1w2Q!W@'
+# $PASSWD = `su - otrs -c '/opt/otrs/bin/otrs.Console.pl Maint::Database::PasswordCrypt q1w2Q!W@'
 
-# sed -i s/'some-pass'/'q1w2E#R$'/g /opt/otrs/Kernel/Config.pm
+sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 ## Deploy database
 
-# mysql -u root -pq1w2E#R$ otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
-# mysql -u root -pq1w2E#R$ otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
+$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
+$MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
 
 ## Iniciando serviço
 
 su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
 su - otrs -c '/opt/otrs/bin/Cron.sh start'
 
+## Setando Admin Password
+
+su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
+
+
+
+## Restart httpd
 
 systemctl enable httpd
 systemctl restart httpd
 
 
-
 ## ITSM module
 
-cd /tmp
+if [ ! -f ITSM-6.0.6.opm ]; then 
+  
+  wget -c http://ftp.otrs.org/pub/otrs/itsm/bundle6/ITSM-6.0.6.opm -O ITSM-6.0.6.opm
 
-wget -c http://ftp.otrs.org/pub/otrs/itsm/bundle6/ITSM-6.0.6.opm
+fi
 
-su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.6.opm'
+su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install ITSM-6.0.6.opm'
+
+
 
 
 
