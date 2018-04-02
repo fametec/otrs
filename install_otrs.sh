@@ -1,13 +1,14 @@
 #!/bin/bash
 
-set -x
+#debug
+#set -x
 
 ## VARIAVEIS
 
 
 MYSQL_ROOT_PASSWORD=''
 MYSQL_NEW_ROOT_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
-MYSQL_NEW_OTRS_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
+#MYSQL_NEW_OTRS_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
 
 ## CONSTANTES
 
@@ -109,28 +110,28 @@ yum -y install "perl(YAML::XS)"
 
 # Criando database
 
-${MYSQL} -e "create database otrs"
-${MYSQL} -e "CREATE USER otrs@localhost IDENTIFIED BY '"${MYSQL_NEW_OTRS_PASSWORD}"';"
-${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
+#${MYSQL} -e "create database otrs"
+#${MYSQL} -e "CREATE USER otrs@localhost IDENTIFIED BY '"${MYSQL_NEW_OTRS_PASSWORD}"';"
+#${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 
 
 ## Configurando o Bando de dados
 
-sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
+#sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 ## Deploy database
 
-$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
-$MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
+#$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
+#$MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
 
 ## Iniciando serviço
 
-su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
-su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
+#su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
+#su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
 
 ## Set Admin Password
 
-su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
+#su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
 
 ## Restart httpd
 
@@ -138,27 +139,13 @@ systemctl enable httpd
 systemctl restart httpd
 
 
-## ITSM module
-
-if [ ! -e ITSM-6.0.6.opm ]; then 
-  
-  wget -c http://ftp.otrs.org/pub/otrs/itsm/bundle6/ITSM-6.0.6.opm -O ITSM-6.0.6.opm
-
-fi
-
-cp ITSM-6.0.6.opm /tmp/
-
-su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.6.opm'
-
-
-
 ## Fim 
 
 echo "MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD"
-echo "MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD"
-echo ""
-echo "Login: otrs@localhost"
-echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
+#echo "MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD"
+#echo ""
+#echo "Login: otrs@localhost"
+#echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
 
 
 
