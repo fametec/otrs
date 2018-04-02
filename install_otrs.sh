@@ -20,7 +20,7 @@ setenforce 0
 
 ## Instalar mariadb-server
 
-yum -y install mariadb-server expect
+yum -y install mariadb-server expect epel-release
 
 
 ## Configurar mysql
@@ -78,6 +78,22 @@ else
 
 fi
 
+
+#Next steps: 
+
+#[restart web server]
+# systemctl restart apache2.service
+
+#[install the OTRS database]
+# Make sure your database server is running.
+# Use a web browser and open this link:
+# http://localhost/otrs/installer.pl
+
+#[start OTRS daemon and corresponding watchdog cronjob]
+# /opt/otrs/bin/otrs.Daemon.pl start
+# /opt/otrs/bin/Cron.sh start
+#
+
 # Criando database
 
 ${MYSQL} -e "create database otrs"
@@ -96,8 +112,8 @@ sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 ## Iniciando serviço
 
-su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
-su - otrs -c '/opt/otrs/bin/Cron.sh start'
+# su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start'
+# su - otrs -c '/opt/otrs/bin/Cron.sh start'
 
 ## Set Admin Password
 
@@ -117,7 +133,7 @@ if [ ! -e ITSM-6.0.6.opm ]; then
 
 fi
 
-su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install ITSM-6.0.6.opm'
+# su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install ITSM-6.0.6.opm'
 
 
 
