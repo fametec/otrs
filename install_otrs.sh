@@ -1,5 +1,6 @@
 #!/bin/bash
 
+set -x
 
 ## VARIAVEIS
 
@@ -79,20 +80,20 @@ fi
 # Criando database
 
 ${MYSQL} -e "create database otrs"
-${MYSQL} -e "CREATE USER \'otrs\'@\'localhost\' IDENTIFIED BY \'${MYSQL_NEW_OTRS_PASSWORD}\';"
-${MYSQL} -e "GRANT ALL on otrs.* TO \'otrs\'@\'localhost\';"
+${MYSQL} -e "CREATE USER otrs@localhost IDENTIFIED BY '"${MYSQL_NEW_OTRS_PASSWORD}"';"
+${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 
 
 ## Configurando o Bando de dados
 
 # $PASSWD = `su - otrs -c '/opt/otrs/bin/otrs.Console.pl Maint::Database::PasswordCrypt q1w2Q!W@'
 
-sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
+# sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 ## Deploy database
 
-$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
-$MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
+# $MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
+# $MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
 
 ## Iniciando serviço
 
@@ -101,7 +102,7 @@ su - otrs -c '/opt/otrs/bin/Cron.sh start'
 
 ## Setando Admin Password
 
-su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
+# su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
 
 
 
@@ -113,7 +114,7 @@ systemctl restart httpd
 
 ## ITSM module
 
-if [ ! -f ITSM-6.0.6.opm ]; then 
+if [ ! -e ITSM-6.0.6.opm ]; then 
   
   wget -c http://ftp.otrs.org/pub/otrs/itsm/bundle6/ITSM-6.0.6.opm -O ITSM-6.0.6.opm
 
