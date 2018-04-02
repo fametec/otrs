@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #debug
-set -x
+# set -x
 
 ## VARIAVEIS
 
@@ -115,9 +115,7 @@ ${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
 su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
 
-## Set Admin Password
 
-#su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
 
 ## Restart httpd
 
@@ -142,6 +140,24 @@ curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="System" 
 curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="ConfigureMail" -d SystemID="68" FQDN="localhost.localdomain" -d AdminEmail="support@yourhost.example.com" -d Organization="Example Company" -d LogModule="Kernel::System::Log::SysLog" -d LogModule::LogFile="/tmp/otrs.log" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
 
 curl -d action="/otrs/installer.pl" -d Action="Installer" -d Subaction="Finish" Skip="0" -d button="Skip this step" http://localhost/otrs/installer.pl
+
+
+
+## Set Admin Password
+
+su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
+
+## ITSM module
+
+if [ ! -e ITSM-6.0.6.opm ]; then 
+  
+  wget -c http://ftp.otrs.org/pub/otrs/itsm/bundle6/ITSM-6.0.6.opm -O ITSM-6.0.6.opm
+
+fi
+
+cp ITSM-6.0.6.opm /tmp/
+
+su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.6.opm'
 
 
 
