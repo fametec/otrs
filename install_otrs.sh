@@ -10,7 +10,7 @@ MYSQL_NEW_OTRS_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};e
 
 ## CONSTANTES
 
-MYSQL=`mysql -u root -p${MYSQL_NEW_ROOT_PASSWORD}`
+MYSQL="mysql -u root -p${MYSQL_NEW_ROOT_PASSWORD}"
 
 ## Desativar SELINUX
 
@@ -123,5 +123,11 @@ su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install ITSM-6.0.6.o
 
 
 
+
+echo "MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD"
+echo "MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD"
+echo ""
+echo "Login: otrs@localhost"
+echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
 
 
