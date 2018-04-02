@@ -1,10 +1,7 @@
 #!/bin/bash
 
 #debug
-set -x
-
-## VARIAVEIS
-
+#set -x
 
 ## ITSM module
 

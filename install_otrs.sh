@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #debug
-#set -x
+set -x
 
 ## VARIAVEIS
 
@@ -17,6 +17,7 @@ MYSQL="mysql -u root -p${MYSQL_NEW_ROOT_PASSWORD}"
 ## Desativar SELINUX
 
 sed -i s/enforcing/permissive/g /etc/selinux/config
+
 setenforce 0
 
 ## Instalar mariadb-server
@@ -82,31 +83,15 @@ fi
 
 ## Dependencias
 
-yum -y install "perl(Crypt::Eksblowfish::Bcrypt)"
-yum -y install "perl(JSON::XS)"
-yum -y install "perl(Mail::IMAPClient)"
-yum -y install "perl(Authen::NTLM)"
-yum -y install "perl(ModPerl::Util)"
-yum -y install "perl(Text::CSV_XS)"
-yum -y install "perl(YAML::XS)"
+yum -y install \
+"perl(Crypt::Eksblowfish::Bcrypt)" \
+"perl(JSON::XS)" \
+"perl(Mail::IMAPClient)" \
+"perl(Authen::NTLM)" \
+"perl(ModPerl::Util)" \
+"perl(Text::CSV_XS)" \
+"perl(YAML::XS)"
 
-
-
-
-#Next steps: 
-
-#[restart web server]
-# systemctl restart apache2.service
-
-#[install the OTRS database]
-# Make sure your database server is running.
-# Use a web browser and open this link:
-# http://localhost/otrs/installer.pl
-
-#[start OTRS daemon and corresponding watchdog cronjob]
-# /opt/otrs/bin/otrs.Daemon.pl start
-# /opt/otrs/bin/Cron.sh start
-#
 
 # Criando database
 
@@ -117,7 +102,7 @@ ${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 
 ## Configurando o Bando de dados
 
-sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
+#sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
 
 ## Deploy database
 
