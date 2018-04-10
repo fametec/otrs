@@ -1,4 +1,25 @@
-#!/bin/bash
+#!/bin/sh
+#
+# versao 0.1
+#
+# NOME
+#   install_otrs.sh
+#
+# DESCRICAO
+#   Instala o OTRS com banco MariaDB incluindo suas dependencias.
+#
+# NOTA
+#
+#   Execute ./install_otrs.sh 
+#   
+# LICENÇAS
+#
+#   Este script está licenciado sob a GPLv3. 
+#
+# MODIFICADO_POR  (DD/MM/YYYY)
+#   Eduardo Fraga  2018-04-10 - Criado por Eduardo Fraga <eduardo@fameconsultoria.com.br>
+#                                
+#
 
 #debug
 # set -x
