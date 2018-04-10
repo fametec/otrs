@@ -1,0 +1,1913 @@
+---
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    Events:
+      - NotificationNewTicket
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentMyQueues
+      - AgentMyServices
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 1
+    VisibleForAgentTooltip:
+      - You will receive a notification each time a new ticket is created in one of your "My Queues" or "My Services".
+  ID: 1
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        das Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] wurde in der Queue <OTRS_TICKET_Queue> erstellt.
+        
+        <OTRS_CUSTOMER_REALNAME> schrieb:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket erstellt: <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] has been created in queue <OTRS_TICKET_Queue>.
+        
+        <OTRS_CUSTOMER_REALNAME> wrote:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket Created: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] se ha creado en la fila <OTRS_TICKET_Queue>.
+        
+        <OTRS_CUSTOMER_REALNAME> escribió:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Se ha creado un ticket: <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy létrejött a következő várólistában: <OTRS_TICKET_Queue>.
+        
+        <OTRS_CUSTOMER_REALNAME> ezt írta:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Jegy létrehozva: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] foi criado na fila <OTRS_TICKET_Queue>.
+        
+        <OTRS_CUSTOMER_REALNAME> escreveu:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket criado: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        тикет [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је отворен у реду <OTRS_TICKET_Queue>.
+        
+        <OTRS_CUSTOMER_REALNAME> је написао/ла:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Oтворен тикет: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        tiket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je otvoren u redu <OTRS_TICKET_Queue>.
+        
+        <OTRS_CUSTOMER_REALNAME> je napisao/la:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Otvoren tiket: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        票据工单 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已在等待队列 已在队列<OTRS_TICKET_Queue> 中被编制完成。中被创建完成
+        
+        <OTRS_CUSTOMER_REALNAME> 写道：
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '票据编制 工单已创建：<OTRS_TICKET_Title>'
+  Name: Ticket create notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    Events:
+      - NotificationPendingReminder
+    LockID:
+      - 1
+    NotificationType:
+      - Ticket
+    OncePerDay:
+      - 1
+    Recipients:
+      - AgentMyQueues
+      - AgentOwner
+      - AgentResponsible
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+  ID: 10
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        die Erinnerungszeit für das freigegebene Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] wurde erreicht.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Erinnerungszeit des freigegebenen Tickets erreicht: <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        the pending reminder time of the unlocked ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] has been reached.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Unlocked Ticket Pending Reminder Time Reached: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el tiempo del recordatorio pendiente para el ticket desbloqueado [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] se ha alcanzado.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Recordatorio pendiente en ticket desbloqueado se ha alcanzado: <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A feloldott [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy elérte az „emlékeztető függőben” idejét.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Feloldott jegy „emlékeztető függőben” ideje elérve: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o tempo de lembrete pendente do ticket desbloqueado [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] foi atingido.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Tempo de Lembrete Pendente do Ticket Desbloqueado Atingido: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        време откључаног тикета на чекању [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је достигнуто.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Истек откључаног тикета на чекању: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        vreme otključanog tiketa na čekanju [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je dostignuto.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Istek otključanog tiketa na čekanju: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        未锁定票据即将到期的提醒时间未锁定工单的挂起提醒时间 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已到已到达。
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '未锁定票据即将到期的提醒时间已到已到未锁定工单的挂起提醒时间：<OTRS_TICKET_Title>'
+  Name: Ticket pending reminder notification (unlocked)
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    Events:
+      - NotificationEscalation
+    NotificationType:
+      - Ticket
+    OncePerDay:
+      - 1
+    Recipients:
+      - AgentMyQueues
+      - AgentWritePermissions
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+  ID: 11
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        das Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] ist eskaliert!
+        
+        Eskaliert am: <OTRS_TICKET_EscalationDestinationDate>
+        Eskaliert seit: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket-Eskalation! <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] is escalated!
+        
+        Escalated at: <OTRS_TICKET_EscalationDestinationDate>
+        Escalated since: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket Escalation! <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] se ha escalado!
+        
+        Escaló: <OTRS_TICKET_EscalationDestinationDate>
+        Escalado desde: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '¡Escalación de ticket! <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy eszkalálódott!
+        
+        Eszkaláció időpontja: <OTRS_TICKET_EscalationDestinationDate>
+        Eszkaláció óta eltelt idő: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Jegyeszkaláció! <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] foi escalonado!
+        
+        Escalonado em: <OTRS_TICKET_EscalationDestinationDate>
+        Escalonado desde: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Escalonamento do ticket! <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        тикет [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је ескалирао!
+        
+        Време ескалације: <OTRS_TICKET_EscalationDestinationDate>
+        Ескалиран од: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ескалација тикета! <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        tiket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je eskalirao!
+        
+        Vreme eskalacije: <OTRS_TICKET_EscalationDestinationDate>
+        Eskaliran od: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Eskalacija tiketa! <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        票据工单 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已被升级！
+        
+        升级地点升级开始时间：<OTRS_TICKET_EscalationDestinationDate>
+        升级开始时间升级在：<OTRS_TICKET_EscalationDestinationIn>内
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '票据升级！工单升级！<OTRS_TICKET_Title>'
+  Name: Ticket escalation notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    Events:
+      - NotificationEscalationNotifyBefore
+    NotificationType:
+      - Ticket
+    OncePerDay:
+      - 1
+    Recipients:
+      - AgentMyQueues
+      - AgentWritePermissions
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+  ID: 12
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        das Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] wird bald eskalieren!
+        
+        Eskalation um: <OTRS_TICKET_EscalationDestinationDate>
+        Eskalation in: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket-Eskalations-Warnung! <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] will escalate!
+        
+        Escalation at: <OTRS_TICKET_EscalationDestinationDate>
+        Escalation in: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket Escalation Warning! <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] se encuentra proximo a escalar!
+        
+        Escalará: <OTRS_TICKET_EscalationDestinationDate>
+        Escalará en: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Aviso de escalación de ticket! <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy eszkalálódni fog!
+        
+        Eszkaláció időpontja: <OTRS_TICKET_EscalationDestinationDate>
+        Eszkalációig fennmaradó idő: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Jegyeszkaláció figyelmeztetés! <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] será escalonado!
+        
+        Escalonamento em: <OTRS_TICKET_EscalationDestinationDate>
+        Escalonamento em: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Aviso de escalonamento do ticket! <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        тикет [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] ће ескалирати!
+        
+        Време ескалације: <OTRS_TICKET_EscalationDestinationDate>
+        Ескалира за: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Упозорење на ескалацију тикета! <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        tiket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] će eskalirati!
+        
+        Vreme eskalacije: <OTRS_TICKET_EscalationDestinationDate>
+        Eskalira za: <OTRS_TICKET_EscalationDestinationIn>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Upozorenje na eskalaciju tiketa! <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好  <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        票据工单 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 将升级！
+        
+        升级地点升级开始时间：<OTRS_TICKET_EscalationDestinationDate>
+        升级开始时间升级在：<OTRS_TICKET_EscalationDestinationIn>内
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '工单升级警告Ticket Escalation Warning! <OTRS_TICKET_Title>'
+  Name: Ticket escalation warning notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    Events:
+      - NotificationServiceUpdate
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentMyServices
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 1
+    VisibleForAgentTooltip:
+      - You will receive a notification if a ticket's service is changed to one of your "My Services".
+  ID: 13
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        der Service des Tickets [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] wurde geändert zu <OTRS_TICKET_Service>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket-Service aktualisiert zu <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        the service of ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] has been updated to <OTRS_TICKET_Service>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket Service Update to <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el servicio del ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] se ha cambiado a <OTRS_TICKET_Service>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'El servicio del ticket ha cambiado a <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy szolgáltatása frissítve lett a következőre: <OTRS_TICKET_Service>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Jegyszolgáltatás frissítve <OTRS_TICKET_Service> szolgáltatásra: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o serviço do ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] foi atualizado para <OTRS_TICKET_Service>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Atualização do serviço do ticket para <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        сервис тикета [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је промењен на <OTRS_TICKET_Service>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Промена сервиса тикета на <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        servis tiketa [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je promenjen na <OTRS_TICKET_Service>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Promena servisa tiketa na <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        票据服务工单服务 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已被升级为已被更新为 <OTRS_TICKET_Service>。
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '票据服务升级为工单服务更新为<OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+  Name: Ticket service update notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    ArticleAttachmentInclude:
+      - 0
+    ArticleCommunicationChannelID:
+      - 1
+    Events:
+      - ArticleEmailSendingError
+    LanguageID:
+      - en
+    NotificationType:
+      - Ticket
+    RecipientGroups:
+      - 2
+    Recipients:
+      - AgentOwner
+      - AgentResponsible
+    TransportEmailTemplate:
+      - Default
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 0
+  ID: 15
+  Message:
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        Please note, that the delivery of an email article of [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] has failed. Please check the email address of your recipient for mistakes and try again. You can manually resend the article from the ticket if required.
+        
+        Error Message:
+        <OTRS_AGENT_TransmissionStatusMessage>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>;ArticleID=<OTRS_AGENT_ArticleID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: Email Delivery Failure
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        Felhívjuk a figyelmét, hogy a(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy e-mail bejegyzésének kézbesítése nem sikerült. Ellenőrizze, hogy nincs-e a címzett e-mail címében hiba, és próbálja meg újra. Kézileg is újraküldheti a bejegyzést a jegyből, ha szükséges.
+        
+        Hibaüzenet:
+        <OTRS_AGENT_TransmissionStatusMessage>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>;ArticleID=<OTRS_AGENT_ArticleID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: E-mail kézbesítési hiba
+  Name: Ticket email delivery failure notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-23 17:13:38
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-23 17:12:42
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    ArticleAttachmentInclude:
+      - 0
+    Events:
+      - TicketCreate
+    IsVisibleForCustomer:
+      - 1
+    LanguageID:
+      - en
+      - pt_BR
+    NotificationType:
+      - Ticket
+    QueueID:
+      - 5
+      - 6
+      - 7
+    Recipients:
+      - Customer
+    TransportEmailTemplate:
+      - Default
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 0
+  ID: 16
+  Message:
+    en:
+      Body: .
+      ContentType: text/html
+      Subject: .
+    pt_BR:
+      Body: |-
+        Olá,<br />
+        <br />
+        Seu ticket de número &lt;OTRS_TICKET_TicketNumber&gt; com assunto &lt;OTRS_CUSTOMER_SUBJECT[30]&gt; foi criado com sucesso e em breve terá seu atendimento iniciado por nossa equipe.<br />
+        <br />
+        Para maiores detalhes, acesse o endereço abaixo:<br />
+        <br />
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>/customer.pl?Action=CustomerTicketZoom&amp;TicketNumber=&lt;OTRS_TICKET_TicketNumber&gt;<br />
+        <br />
+        Sistema de suporte ao usuário
+      ContentType: text/html
+      Subject: Ticket criado
+  Name: Ticket criado
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-23 17:17:14
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-23 17:17:14
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    ArticleAttachmentInclude:
+      - 0
+    Events:
+      - TicketStateUpdate
+    LanguageID:
+      - en
+      - pt_BR
+    NotificationType:
+      - Ticket
+    QueueID:
+      - 5
+      - 6
+      - 7
+    Recipients:
+      - Customer
+    StateID:
+      - 2
+      - 3
+    TransportEmailTemplate:
+      - Default
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 0
+  ID: 17
+  Message:
+    en:
+      Body: |-
+        Olá,<br />
+        <br />
+        O seu ticket de número &lt;OTRS_TICKET_TicketNumber&gt; foi finalizado por nossa equipe de atendimento. Caso deseje reabri-lo, basta responder a este email.<br />
+        <br />
+        Sistema de suporte ao usuário.
+      ContentType: text/html
+      Subject: Ticket finalizado
+    pt_BR:
+      Body: |-
+        Olá,<br />
+        <br />
+        O seu ticket de número &lt;OTRS_TICKET_TicketNumber&gt; foi finalizado por nossa equipe de atendimento. Caso deseje reabri-lo, basta responder a este email.<br />
+        <br />
+        Sistema de suporte ao usuário.
+      ContentType: text/html
+      Subject: Ticket finalizado
+  Name: Ticket fechado
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-23 17:20:15
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-23 17:17:56
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    ArticleAttachmentInclude:
+      - 0
+    Events:
+      - TicketStateUpdate
+    LanguageID:
+      - en
+      - pt_BR
+    NotificationType:
+      - Ticket
+    QueueID:
+      - 5
+      - 6
+      - 7
+    Recipients:
+      - Customer
+    StateID:
+      - 4
+    TransportEmailTemplate:
+      - Default
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 0
+  ID: 18
+  Message:
+    en:
+      Body: |-
+        Olá,<br />
+        <br />
+        Seu ticket de suporte de número &lt;OTRS_TICKET_TicketNumber&gt; teve seu atendimento iniciado e em breve será resolvido.<br />
+        <br />
+        Para maiores detalhes, acesse o endereço abaixo:<br />
+        <br />
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>/customer.pl?Action=CustomerTicketZoom&amp;TicketNumber=&lt;OTRS_TICKET_TicketNumber&gt;<br />
+        <br />
+        Sistema de atendimento ao usuário.
+      ContentType: text/html
+      Subject: Atendimento iniciado
+    pt_BR:
+      Body: |-
+        Olá,<br />
+        <br />
+        Seu ticket de suporte de número &lt;OTRS_TICKET_TicketNumber&gt; teve seu atendimento iniciado e em breve será resolvido.<br />
+        <br />
+        Para maiores detalhes, acesse o endereço abaixo:<br />
+        <br />
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>/customer.pl?Action=CustomerTicketZoom&amp;TicketNumber=&lt;OTRS_TICKET_TicketNumber&gt;<br />
+        <br />
+        Sistema de atendimento ao usuário.
+      ContentType: text/html
+      Subject: Atendimento iniciado
+  Name: Atendimento iniciado
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-23 17:33:08
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-23 17:20:39
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    ArticleAttachmentInclude:
+      - 0
+    Events:
+      - TicketStateUpdate
+    LanguageID:
+      - en
+      - pt_BR
+    NotificationType:
+      - Ticket
+    QueueID:
+      - 5
+      - 6
+      - 7
+    Recipients:
+      - Customer
+    StateID:
+      - 11
+    TransportEmailTemplate:
+      - Default
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 0
+  ID: 19
+  Message:
+    en:
+      Body: |-
+        Olá,<br />
+        <br />
+        Seu ticket de suporte de número &lt;OTRS_TICKET_TicketNumber&gt; foi classificado.<br />
+        <br />
+        Para maiores detalhes, acesse o endereço abaixo:<br />
+        <br />
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>/customer.pl?Action=CustomerTicketZoom&amp;TicketNumber=&lt;OTRS_TICKET_TicketNumber&gt;<br />
+        <br />
+        Sistema de atendimento ao usuário.
+      ContentType: text/html
+      Subject: Ticket classificado
+    pt_BR:
+      Body: |-
+        Olá,<br />
+        <br />
+        Seu ticket de suporte de número &lt;OTRS_TICKET_TicketNumber&gt; foi classificado.<br />
+        <br />
+        Para maiores detalhes, acesse o endereço abaixo:<br />
+        <br />
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>/customer.pl?Action=CustomerTicketZoom&amp;TicketNumber=&lt;OTRS_TICKET_TicketNumber&gt;<br />
+        <br />
+        Sistema de atendimento ao usuário.
+      ContentType: text/html
+      Subject: Ticket classificado
+  Name: Ticket Classificado
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    Events:
+      - NotificationFollowUp
+    LockID:
+      - 1
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentMyQueues
+      - AgentMyServices
+      - AgentOwner
+      - AgentWatcher
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 1
+    VisibleForAgentTooltip:
+      - You will receive a notification if a customer sends a follow-up to an unlocked ticket which is in your "My Queues" or "My Services".
+  ID: 2
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        zum freigegebenen Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] gibt es eine Nachfrage.
+        
+        <OTRS_CUSTOMER_REALNAME> schrieb:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Nachfrage zum freigegebenen Ticket: <OTRS_CUSTOMER_SUBJECT[24]>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        the unlocked ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] received a follow-up.
+        
+        <OTRS_CUSTOMER_REALNAME> wrote:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Unlocked Ticket Follow-Up: <OTRS_CUSTOMER_SUBJECT[24]>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el ticket desbloqueado [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] recibió un seguimiento.
+        
+        <OTRS_CUSTOMER_REALNAME> escribió:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Seguimiento a ticket desbloqueado: <OTRS_CUSTOMER_SUBJECT[24]>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A feloldott [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy egy követő üzenetet kapott.
+        
+        <OTRS_CUSTOMER_REALNAME> ezt írta:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Feloldott jegy követése: <OTRS_CUSTOMER_SUBJECT[24]>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o ticket desbloqueado [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] recebeu uma resposta.
+        
+        <OTRS_CUSTOMER_REALNAME> escreveu:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Acompanhamento do ticket desbloqueado: <OTRS_CUSTOMER_SUBJECT[24]>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        откључани тикет [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је примио наставак.
+        
+        <OTRS_CUSTOMER_REALNAME> је написао/ла:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Наставак откључаног тикета: <OTRS_CUSTOMER_SUBJECT[24]>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        otključani tiket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je primio nastavak.
+        
+        <OTRS_CUSTOMER_REALNAME> je napisao/la:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Nastavak otključanog tiketa: <OTRS_CUSTOMER_SUBJECT[24]>'
+    zh_CN:
+      Body: |-
+        您好<OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        解锁票据解锁工单[<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已获得一项后续作业。
+        
+        <OTRS_CUSTOMER_REALNAME> 写道:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '解锁票据的后续作业解锁工单的后续： <OTRS_CUSTOMER_SUBJECT[24]>'
+  Name: Ticket follow-up notification (unlocked)
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    Events:
+      - NotificationFollowUp
+    LockID:
+      - 2
+      - 3
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentOwner
+      - AgentResponsible
+      - AgentWatcher
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 1
+    VisibleForAgentTooltip:
+      - You will receive a notification if a customer sends a follow-up to a locked ticket of which you are the ticket owner or responsible.
+  ID: 3
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        zum gesperrten Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] gibt es eine Nachfrage.
+        
+        <OTRS_CUSTOMER_REALNAME> schrieb:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Nachfrage zum gesperrten Ticket: <OTRS_CUSTOMER_SUBJECT[24]>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        the locked ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] received a follow-up.
+        
+        <OTRS_CUSTOMER_REALNAME> wrote:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Locked Ticket Follow-Up: <OTRS_CUSTOMER_SUBJECT[24]>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el ticket bloqueado [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] recibió un seguimiento.
+        
+        <OTRS_CUSTOMER_REALNAME> escribió:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Seguimiento a ticket bloqueado: <OTRS_CUSTOMER_SUBJECT[24]>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A zárolt [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy egy követő üzenetet kapott.
+        
+        <OTRS_CUSTOMER_REALNAME> ezt írta:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Zárolt jegy követése: <OTRS_CUSTOMER_SUBJECT[24]>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o ticket bloqueado [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] recebeu uma resposta.
+        
+        <OTRS_CUSTOMER_REALNAME> escreveu:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Acompanhamento do ticket bloqueado: <OTRS_CUSTOMER_SUBJECT[24]>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        закључани тикет [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је примио наставак.
+        
+        <OTRS_CUSTOMER_REALNAME> је написао/ла:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Наставак закључаног тикета: <OTRS_CUSTOMER_SUBJECT[24]>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        zaključani tiket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je primio nastavak.
+        
+        <OTRS_CUSTOMER_REALNAME> je napisao/la:
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Nastavak zaključanog tiketa: <OTRS_CUSTOMER_SUBJECT[24]>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        加锁票据锁定工单 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已获得一项后续作业。
+        
+        <OTRS_CUSTOMER_REALNAME> 写道：
+        <OTRS_CUSTOMER_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '加锁票据的后续作业 锁定工单后续：<OTRS_CUSTOMER_SUBJECT[24]>'
+  Name: Ticket follow-up notification (locked)
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    Events:
+      - NotificationLockTimeout
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentOwner
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 1
+    VisibleForAgentTooltip:
+      - You will receive a notification as soon as a ticket owned by you is automatically unlocked.
+  ID: 4
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        die Sperrzeit des Tickets [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] ist abgelaufen. Es ist jetzt freigegeben.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticketsperre aufgehoben: <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] has reached its lock timeout period and is now unlocked.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket Lock Timeout: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]  ha alcanzado su tiempo de espera como bloqueado y ahora se encuentra desbloqueado.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Terminó tiempo de bloqueo: <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy elérte a zárolás időkorlátjának időtartamát, és most feloldásra került.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Jegyzár időkorlát: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] atingiu o seu período de tempo limite de bloqueio e agora está desbloqueado.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Tempo limite de bloqueio do ticket: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        тикет [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је достигао време откључавања.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Истек закључаног тикета: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        tiket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je dostigao vreme otključavanja.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Istek zaključanog tiketa: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        票据工单 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已达到其锁定时限，现在解锁。
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '票据加锁超时工单锁定超时：<OTRS_TICKET_Title>'
+  Name: Ticket lock timeout notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    Events:
+      - NotificationOwnerUpdate
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentOwner
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+  ID: 5
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        der Besitzer des Tickets [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] wurde von <OTRS_CURRENT_UserFullname> geändert auf <OTRS_TICKET_OWNER_UserFullname>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Änderung des Ticket-Besitzers auf <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        the owner of ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] has been updated to <OTRS_TICKET_OWNER_UserFullname> by <OTRS_CURRENT_UserFullname>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket Owner Update to <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el propietario del ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] se ha modificado  a <OTRS_TICKET_OWNER_UserFullname> por <OTRS_CURRENT_UserFullname>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Actualización del propietario de ticket a <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy tulajdonosát <OTRS_CURRENT_UserLastname> <OTRS_CURRENT_UserFirstname> frissítette <OTRS_OWNER_UserLastname> <OTRS_OWNER_UserFirstname> ügyintézőre.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Jegytulajdonos frissítés <OTRS_OWNER_UserLastname> <OTRS_OWNER_UserFirstname> ügyintézőre: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o proprietário do ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] foi atualizado para <OTRS_TICKET_OWNER_UserFullname> por <OTRS_CURRENT_UserFullname>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Atualização de proprietário de ticket para <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        власник тикета [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је промењен на <OTRS_TICKET_OWNER_UserFullname> од стране <OTRS_CURRENT_UserFullname>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Промена власника тикета на <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        vlasnik tiketa [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je promenjen na <OTRS_TICKET_OWNER_UserFullname> by <OTRS_CURRENT_UserFullname>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Promena vlasnika tiketa na <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        票据的所有人工单的所有者 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已被该信为 <OTRS_TICKET_OWNER_UserFullname> 的 <OTRS_CURRENT_UserFullname>。
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '票据的拥有人升级为工单所有者更新为 <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+  Name: Ticket owner update notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-23 17:39:35
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    ArticleAttachmentInclude:
+      - 0
+    Events:
+      - NotificationResponsibleUpdate
+    LanguageID:
+      - de
+      - en
+      - es_MX
+      - hu
+      - pt_BR
+      - sr_Cyrl
+      - sr_Latn
+      - zh_CN
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentResponsible
+      - Customer
+    SendOnOutOfOffice:
+      - 1
+    TransportEmailTemplate:
+      - Default
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 0
+  ID: 6
+  Message:
+    de:
+      Body: |-
+        Hallo &lt;OTRS_NOTIFICATION_RECIPIENT_UserFirstname&gt; &lt;OTRS_NOTIFICATION_RECIPIENT_UserLastname&gt;,<br />
+        <br />
+        der Verantwortliche für das Ticket [&lt;OTRS_CONFIG_Ticket::Hook&gt;&lt;OTRS_CONFIG_Ticket::HookDivider&gt;&lt;OTRS_TICKET_TicketNumber&gt;] wurde von &lt;OTRS_CURRENT_UserFullname&gt; geändert auf &lt;OTRS_TICKET_RESPONSIBLE_UserFullname&gt;.<br />
+        <br />
+        &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom;TicketID=&lt;OTRS_TICKET_TicketID&gt;<br />
+        <br />
+        -- &lt;OTRS_CONFIG_NotificationSenderName&gt;
+      ContentType: text/html
+      Subject: 'Änderung des Ticket-Verantwortlichen auf <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi &lt;OTRS_NOTIFICATION_RECIPIENT_UserFirstname&gt;,<br />
+        <br />
+        the responsible agent of ticket [&lt;OTRS_CONFIG_Ticket::Hook&gt;&lt;OTRS_CONFIG_Ticket::HookDivider&gt;&lt;OTRS_TICKET_TicketNumber&gt;] has been updated to &lt;OTRS_TICKET_RESPONSIBLE_UserFullname&gt; by &lt;OTRS_CURRENT_UserFullname&gt;.<br />
+        <br />
+        &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom;TicketID=&lt;OTRS_TICKET_TicketID&gt;<br />
+        <br />
+        -- &lt;OTRS_CONFIG_NotificationSenderName&gt;
+      ContentType: text/html
+      Subject: 'Ticket Responsible Update to <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola &lt;OTRS_NOTIFICATION_RECIPIENT_UserFirstname&gt;,<br />
+        <br />
+        el agente responsable del ticket [&lt;OTRS_CONFIG_Ticket::Hook&gt;&lt;OTRS_CONFIG_Ticket::HookDivider&gt;&lt;OTRS_TICKET_TicketNumber&gt;] se ha modificado a &lt;OTRS_TICKET_RESPONSIBLE_UserFullname&gt; por &lt;OTRS_CURRENT_UserFullname&gt;.<br />
+        <br />
+        &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom;TicketID=&lt;OTRS_TICKET_TicketID&gt;<br />
+        <br />
+        -- &lt;OTRS_CONFIG_NotificationSenderName&gt;
+      ContentType: text/html
+      Subject: 'Actualización del responsable de ticket a <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves &lt;OTRS_NOTIFICATION_RECIPIENT_UserFirstname&gt;!<br />
+        <br />
+        A(z) [&lt;OTRS_CONFIG_Ticket::Hook&gt;&lt;OTRS_CONFIG_Ticket::HookDivider&gt;&lt;OTRS_TICKET_TicketNumber&gt;] jegy felelős ügyintézőjét &lt;OTRS_CURRENT_UserLastname&gt; &lt;OTRS_CURRENT_UserFirstname&gt; frissítette &lt;OTRS_RESPONSIBLE_UserLastname&gt; &lt;OTRS_RESPONSIBLE_UserFirstname&gt; ügyintézőre.<br />
+        <br />
+        &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom;TicketID=&lt;OTRS_TICKET_TicketID&gt;<br />
+        <br />
+        -- &lt;OTRS_CONFIG_NotificationSenderName&gt;
+      ContentType: text/html
+      Subject: 'Jegyfelelős frissítés <OTRS_RESPONSIBLE_UserLastname> <OTRS_RESPONSIBLE_UserFirstname> ügyintézőre: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Olá &lt;OTRS_NOTIFICATION_RECIPIENT_UserFirstname&gt;,<br />
+        <br />
+        O agente responsável do ticket [&lt;OTRS_CONFIG_Ticket::Hook&gt;&lt;OTRS_CONFIG_Ticket::HookDivider&gt;&lt;OTRS_TICKET_TicketNumber&gt;] foi atualizado para &lt;OTRS_TICKET_RESPONSIBLE_UserFullname&gt; por &lt;OTRS_CURRENT_UserFullname&gt;.<br />
+        <br />
+        &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom&amp;TicketID=&lt;OTRS_TICKET_TicketID&gt;<br />
+        <br />
+        -- &lt;OTRS_CONFIG_NotificationSenderName&gt;
+      ContentType: text/html
+      Subject: 'Atualização de responsável de ticket para <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво &lt;OTRS_NOTIFICATION_RECIPIENT_UserFirstname&gt;,<br />
+        <br />
+        одговорни оператер тикета [&lt;OTRS_CONFIG_Ticket::Hook&gt;&lt;OTRS_CONFIG_Ticket::HookDivider&gt;&lt;OTRS_TICKET_TicketNumber&gt;] је промењен на &lt;OTRS_TICKET_RESPONSIBLE_UserFullname&gt; од стране &lt;OTRS_CURRENT_UserFullname&gt;.<br />
+        <br />
+        &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom;TicketID=&lt;OTRS_TICKET_TicketID&gt;<br />
+        <br />
+        -- &lt;OTRS_CONFIG_NotificationSenderName&gt;
+      ContentType: text/html
+      Subject: 'Промена одговорног за тикет на <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo &lt;OTRS_NOTIFICATION_RECIPIENT_UserFirstname&gt;,<br />
+        <br />
+        odgovorni operater tiketa [&lt;OTRS_CONFIG_Ticket::Hook&gt;&lt;OTRS_CONFIG_Ticket::HookDivider&gt;&lt;OTRS_TICKET_TicketNumber&gt;] je promenjen na &lt;OTRS_TICKET_RESPONSIBLE_UserFullname&gt; by &lt;OTRS_CURRENT_UserFullname&gt;.<br />
+        <br />
+        &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom;TicketID=&lt;OTRS_TICKET_TicketID&gt;<br />
+        <br />
+        -- &lt;OTRS_CONFIG_NotificationSenderName&gt;
+      ContentType: text/html
+      Subject: 'Promena odgovornog za tiket na <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 &lt;OTRS_NOTIFICATION_RECIPIENT_UserFirstname&gt;,<br />
+        <br />
+        工单的负责人 [&lt;OTRS_CONFIG_Ticket::Hook&gt;&lt;OTRS_CONFIG_Ticket::HookDivider&gt;&lt;OTRS_TICKET_TicketNumber&gt;] 已被升级为 已被更新为 &lt;OTRS_TICKET_RESPONSIBLE_UserFullname&gt; 的 &lt;OTRS_CURRENT_UserFullname&gt;.<br />
+        <br />
+        &lt;OTRS_CONFIG_HttpType&gt;://&lt;OTRS_CONFIG_FQDN&gt;/&lt;OTRS_CONFIG_ScriptAlias&gt;index.pl?Action=AgentTicketZoom;TicketID=&lt;OTRS_TICKET_TicketID&gt;<br />
+        <br />
+        -- &lt;OTRS_CONFIG_NotificationSenderName&gt;
+      ContentType: text/html
+      Subject: '票据的负责人 工单负责人更新为<OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+  Name: Ticket responsible update notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    Events:
+      - NotificationAddNote
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentOwner
+      - AgentResponsible
+      - AgentWatcher
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+  ID: 7
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        <OTRS_CURRENT_UserFullname> schrieb:
+        <OTRS_AGENT_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket-Notiz: <OTRS_AGENT_SUBJECT[24]>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        <OTRS_CURRENT_UserFullname> wrote:
+        <OTRS_AGENT_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket Note: <OTRS_AGENT_SUBJECT[24]>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        <OTRS_CURRENT_UserFullname> escribió:
+        <OTRS_AGENT_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Nota de ticket: <OTRS_AGENT_SUBJECT[24]>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        <OTRS_CURRENT_UserLastname> <OTRS_CURRENT_UserFirstname> ezt írta:
+        <OTRS_AGENT_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Új jegyzet: <OTRS_AGENT_SUBJECT[24]>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        <OTRS_CURRENT_UserFullname> escreveu:
+        <OTRS_AGENT_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Observação sobre o ticket: <OTRS_AGENT_SUBJECT[24]>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        <OTRS_CURRENT_UserFullname> је написао/ла:
+        <OTRS_AGENT_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Напомена тикета: <OTRS_AGENT_SUBJECT[24]>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        <OTRS_CURRENT_UserFullname> je napisao/la:
+        <OTRS_AGENT_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Napomena tiketa: <OTRS_AGENT_SUBJECT[24]>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        <OTRS_CURRENT_UserFullname> 写道：
+        <OTRS_AGENT_BODY[30]>
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '票据备注工单备注：<OTRS_AGENT_SUBJECT[24]>'
+  Name: Ticket new note notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    AgentEnabledByDefault:
+      - Email
+    Events:
+      - NotificationMove
+    NotificationType:
+      - Ticket
+    Recipients:
+      - AgentMyQueues
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+    VisibleForAgent:
+      - 1
+    VisibleForAgentTooltip:
+      - You will receive a notification if a ticket is moved into one of your "My Queues".
+  ID: 8
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        das Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] wurde in die Queue <OTRS_TICKET_Queue> verschoben.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket-Queue geändert zu <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] has been updated to queue <OTRS_TICKET_Queue>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Ticket Queue Update to <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] ha cambiado de fila a <OTRS_TICKET_Queue>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'La fila del ticket ha cambiado a <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegyet áthelyezték a következő várólistába: <OTRS_TICKET_Queue>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Jegy várólista frissítés <OTRS_TICKET_Queue> várólistára: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] foi atualizado na fila <OTRS_TICKET_Queue>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Atualização da fila do ticket para <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        тикету [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је промењен ред у <OTRS_TICKET_Queue>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Промена реда тикета у <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        tiketu [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je promenjen red u <OTRS_TICKET_Queue>.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Promena reda tiketa u <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        票据工单 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已被升级为序列已被更新为队列 <OTRS_TICKET_Queue>。
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '票据序列已升级为工单队列更新为<OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+  Name: Ticket queue update notification
+  ValidID: 1
+- ChangeBy: 1
+  ChangeTime: 2018-03-21 00:35:40
+  Comment: ''
+  CreateBy: 1
+  CreateTime: 2018-03-21 00:35:40
+  Data:
+    Events:
+      - NotificationPendingReminder
+    LockID:
+      - 2
+      - 3
+    NotificationType:
+      - Ticket
+    OncePerDay:
+      - 1
+    Recipients:
+      - AgentOwner
+      - AgentResponsible
+    SendOnOutOfOffice:
+      - 1
+    Transports:
+      - Email
+  ID: 9
+  Message:
+    de:
+      Body: |-
+        Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+        
+        die Erinnerungszeit für das gesperrte Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] wurde erreicht.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Erinnerungszeit des gesperrten Tickets erreicht: <OTRS_TICKET_Title>'
+    en:
+      Body: |-
+        Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        the pending reminder time of the locked ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] has been reached.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Locked Ticket Pending Reminder Time Reached: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: |-
+        Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        el tiempo del recordatorio pendiente para el ticket bloqueado [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] se ha alcanzado.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Recordatorio pendiente en ticket bloqueado se ha alcanzado: <OTRS_TICKET_Title>'
+    hu:
+      Body: |-
+        Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+        
+        A zárolt [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] jegy elérte az „emlékeztető függőben” idejét.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Zárolt jegy „emlékeztető függőben” ideje elérve: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: |-
+        Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        o tempo de lembrete pendente do ticket bloqueado [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] foi atingido.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Tempo de Lembrete de Pendência do Ticket Bloqueado Atingido: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: |-
+        Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        време закључаног тикета на чекању [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] је достигнуто.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Истек закључаног тикета на чекању: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: |-
+        Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        vreme zaključanog tiketa na čekanju [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] je dostignuto.
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: 'Istek zaključanog tiketa na čekanju: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: |-
+        您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+        
+        锁定票据即将到期的提醒时间锁定工单挂起提醒时间 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>] 已到达。
+        
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+        
+        -- <OTRS_CONFIG_NotificationSenderName>
+      ContentType: text/plain
+      Subject: '已达到锁定票据即将到期的提醒时间已到达锁定工单挂起提醒时间：<OTRS_TICKET_Title>'
+  Name: Ticket pending reminder notification (locked)
+  ValidID: 1
