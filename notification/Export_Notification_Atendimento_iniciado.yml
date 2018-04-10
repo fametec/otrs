@@ -1,0 +1,56 @@
+---
+- ChangeBy: '1'
+  ChangeTime: 2018-04-10 18:27:06
+  Comment: ''
+  CreateBy: '1'
+  CreateTime: 2018-04-10 18:27:06
+  Data:
+    AgentEnabledByDefault:
+    - Email
+    ArticleAttachmentInclude:
+    - '0'
+    Events:
+    - TicketStateUpdate
+    LanguageID:
+    - pt_BR
+    NotificationType:
+    - Ticket
+    QueueID:
+    - '5'
+    - '6'
+    - '7'
+    Recipients:
+    - Customer
+    StateID:
+    - '4'
+    TransportEmailTemplate:
+    - Default
+    Transports:
+    - Email
+    VisibleForAgent:
+    - '0'
+  ID: '18'
+  Message:
+    pt_BR:
+      Body: 'Olá,<br />
+
+        <br />
+
+        Seu ticket de suporte de número <OTRS_TICKET_TicketNumber> teve seu
+        atendimento iniciado e em breve será resolvido.<br />
+
+        <br />
+
+        Para maiores detalhes, acesse o endereço abaixo:<br />
+
+        <br />
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>/customer.pl?Action=CustomerTicketZoom&amp;TicketNumber=<OTRS_TICKET_TicketNumber><br />
+
+        <br />
+
+        <OTRS_CONFIG_NotificationSenderName>.'
+      ContentType: text/html
+      Subject: Atendimento iniciado
+  Name: Atendimento do Ticket <OTRS_TICKET_TicketNumber> iniciado
+  ValidID: '1'

@@ -1,0 +1,135 @@
+---
+- ChangeBy: '1'
+  ChangeTime: 2018-04-10 16:18:44
+  Comment: ''
+  CreateBy: '1'
+  CreateTime: 2018-04-10 16:18:44
+  Data:
+    Events:
+    - NotificationOwnerUpdate
+    Recipients:
+    - AgentOwner
+    SendOnOutOfOffice:
+    - '1'
+    Transports:
+    - Email
+  ID: '5'
+  Message:
+    de:
+      Body: 'Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+
+
+        der Besitzer des Tickets [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        wurde von <OTRS_CURRENT_UserFullname> geändert auf <OTRS_TICKET_OWNER_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Änderung des Ticket-Besitzers auf <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    en:
+      Body: 'Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        the owner of ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        has been updated to <OTRS_TICKET_OWNER_UserFullname> by <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Ticket Owner Update to <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: 'Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        el propietario del ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        se ha modificado  a <OTRS_TICKET_OWNER_UserFullname> por <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Actualización del propietario de ticket a <OTRS_OWNER_UserFullname>:
+        <OTRS_TICKET_Title>'
+    hu:
+      Body: 'Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+
+
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        jegy tulajdonosát <OTRS_CURRENT_UserLastname> <OTRS_CURRENT_UserFirstname>
+        frissítette <OTRS_OWNER_UserLastname> <OTRS_OWNER_UserFirstname> ügyintézőre.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Jegytulajdonos frissítés <OTRS_OWNER_UserLastname> <OTRS_OWNER_UserFirstname>
+        ügyintézőre: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: 'Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        o proprietário do ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        foi atualizado para <OTRS_TICKET_OWNER_UserFullname> por <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Atualização de proprietário de ticket para <OTRS_OWNER_UserFullname>:
+        <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: 'Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        власник тикета [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        је промењен на <OTRS_TICKET_OWNER_UserFullname> од стране <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Промена власника тикета на <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: 'Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        vlasnik tiketa [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        je promenjen na <OTRS_TICKET_OWNER_UserFullname> by <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Promena vlasnika tiketa na <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: '您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        票据的所有人工单的所有者 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        已被该信为 <OTRS_TICKET_OWNER_UserFullname> 的 <OTRS_CURRENT_UserFullname>。
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: '票据的拥有人升级为工单所有者更新为 <OTRS_OWNER_UserFullname>: <OTRS_TICKET_Title>'
+  Name: Ticket owner update notification
+  ValidID: '1'

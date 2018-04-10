@@ -1,0 +1,137 @@
+---
+- ChangeBy: '1'
+  ChangeTime: 2018-04-10 16:18:44
+  Comment: ''
+  CreateBy: '1'
+  CreateTime: 2018-04-10 16:18:44
+  Data:
+    AgentEnabledByDefault:
+    - Email
+    Events:
+    - NotificationMove
+    Recipients:
+    - AgentMyQueues
+    SendOnOutOfOffice:
+    - '1'
+    Transports:
+    - Email
+    VisibleForAgent:
+    - '1'
+    VisibleForAgentTooltip:
+    - You will receive a notification if a ticket is moved into one of your "My Queues".
+  ID: '8'
+  Message:
+    de:
+      Body: 'Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+
+
+        das Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        wurde in die Queue <OTRS_TICKET_Queue> verschoben.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Ticket-Queue geändert zu <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    en:
+      Body: 'Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        has been updated to queue <OTRS_TICKET_Queue>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Ticket Queue Update to <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: 'Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        el ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        ha cambiado de fila a <OTRS_TICKET_Queue>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'La fila del ticket ha cambiado a <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    hu:
+      Body: 'Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+
+
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        jegyet áthelyezték a következő várólistába: <OTRS_TICKET_Queue>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Jegy várólista frissítés <OTRS_TICKET_Queue> várólistára: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: 'Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        o ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        foi atualizado na fila <OTRS_TICKET_Queue>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Atualização da fila do ticket para <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: 'Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        тикету [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        је промењен ред у <OTRS_TICKET_Queue>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Промена реда тикета у <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: 'Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        tiketu [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        je promenjen red u <OTRS_TICKET_Queue>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Promena reda tiketa u <OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: '您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        票据工单 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        已被升级为序列已被更新为队列 <OTRS_TICKET_Queue>。
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: '票据序列已升级为工单队列更新为<OTRS_TICKET_Queue>: <OTRS_TICKET_Title>'
+  Name: Ticket queue update notification
+  ValidID: '1'

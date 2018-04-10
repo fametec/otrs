@@ -1,0 +1,137 @@
+---
+- ChangeBy: '1'
+  ChangeTime: 2018-04-10 16:18:44
+  Comment: ''
+  CreateBy: '1'
+  CreateTime: 2018-04-10 16:18:44
+  Data:
+    Events:
+    - NotificationResponsibleUpdate
+    Recipients:
+    - AgentResponsible
+    SendOnOutOfOffice:
+    - '1'
+    Transports:
+    - Email
+  ID: '6'
+  Message:
+    de:
+      Body: 'Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+
+
+        der Verantwortliche für das Ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        wurde von <OTRS_CURRENT_UserFullname> geändert auf <OTRS_TICKET_RESPONSIBLE_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Änderung des Ticket-Verantwortlichen auf <OTRS_RESPONSIBLE_UserFullname>:
+        <OTRS_TICKET_Title>'
+    en:
+      Body: 'Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        the responsible agent of ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        has been updated to <OTRS_TICKET_RESPONSIBLE_UserFullname> by <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Ticket Responsible Update to <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: 'Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        el agente responsable del ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        se ha modificado a <OTRS_TICKET_RESPONSIBLE_UserFullname> por <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Actualización del responsable de ticket a <OTRS_RESPONSIBLE_UserFullname>:
+        <OTRS_TICKET_Title>'
+    hu:
+      Body: 'Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+
+
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        jegy felelős ügyintézőjét <OTRS_CURRENT_UserLastname> <OTRS_CURRENT_UserFirstname>
+        frissítette <OTRS_RESPONSIBLE_UserLastname> <OTRS_RESPONSIBLE_UserFirstname>
+        ügyintézőre.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Jegyfelelős frissítés <OTRS_RESPONSIBLE_UserLastname> <OTRS_RESPONSIBLE_UserFirstname>
+        ügyintézőre: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: 'Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        o agente responsável do ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        foi atualizado para <OTRS_TICKET_RESPONSIBLE_UserFullname> por <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Atualização de responsável de ticket para <OTRS_RESPONSIBLE_UserFullname>:
+        <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: 'Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        одговорни оператер тикета [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        је промењен на <OTRS_TICKET_RESPONSIBLE_UserFullname> од стране <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Промена одговорног за тикет на <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: 'Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        odgovorni operater tiketa [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        je promenjen na <OTRS_TICKET_RESPONSIBLE_UserFullname> by <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Promena odgovornog za tiket na <OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: '您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        工单的负责人 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        已被升级为 已被更新为 <OTRS_TICKET_RESPONSIBLE_UserFullname> 的 <OTRS_CURRENT_UserFullname>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: '票据的负责人 工单负责人更新为<OTRS_RESPONSIBLE_UserFullname>: <OTRS_TICKET_Title>'
+  Name: Ticket responsible update notification
+  ValidID: '1'

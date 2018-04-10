@@ -1,0 +1,41 @@
+---
+- ChangeBy: '1'
+  ChangeTime: 2018-04-10 16:18:44
+  Comment: ''
+  CreateBy: '1'
+  CreateTime: 2018-04-10 16:18:44
+  Data:
+    Events:
+    - NotificationEscalation
+    OncePerDay:
+    - '1'
+    Recipients:
+    - AgentMyQueues
+    - AgentWritePermissions
+    SendOnOutOfOffice:
+    - '1'
+    Transports:
+    - Email
+  ID: '11'
+  Message:
+    pt_BR:
+      Body: 'Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        o ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        foi escalonado!
+
+
+        Escalonado em: <OTRS_TICKET_EscalationDestinationDate>
+
+        Escalonado desde: <OTRS_TICKET_EscalationDestinationIn>
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom&TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: Escalonamento do ticket! <OTRS_TICKET_Title>
+  Name: Ticket escalation notification
+  ValidID: '1'

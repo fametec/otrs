@@ -1,0 +1,138 @@
+---
+- ChangeBy: '1'
+  ChangeTime: 2018-04-10 16:18:44
+  Comment: ''
+  CreateBy: '1'
+  CreateTime: 2018-04-10 16:18:44
+  Data:
+    AgentEnabledByDefault:
+    - Email
+    Events:
+    - NotificationServiceUpdate
+    Recipients:
+    - AgentMyServices
+    SendOnOutOfOffice:
+    - '1'
+    Transports:
+    - Email
+    VisibleForAgent:
+    - '1'
+    VisibleForAgentTooltip:
+    - You will receive a notification if a ticket's service is changed to one of your
+      "My Services".
+  ID: '13'
+  Message:
+    de:
+      Body: 'Hallo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname> <OTRS_NOTIFICATION_RECIPIENT_UserLastname>,
+
+
+        der Service des Tickets [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        wurde geändert zu <OTRS_TICKET_Service>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Ticket-Service aktualisiert zu <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    en:
+      Body: 'Hi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        the service of ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        has been updated to <OTRS_TICKET_Service>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Ticket Service Update to <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    es_MX:
+      Body: 'Hola <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        el servicio del ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        se ha cambiado a <OTRS_TICKET_Service>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'El servicio del ticket ha cambiado a <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    hu:
+      Body: 'Kedves <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>!
+
+
+        A(z) [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        jegy szolgáltatása frissítve lett a következőre: <OTRS_TICKET_Service>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Jegyszolgáltatás frissítve <OTRS_TICKET_Service> szolgáltatásra: <OTRS_TICKET_Title>'
+    pt_BR:
+      Body: 'Oi <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        o serviço do ticket [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        foi atualizado para <OTRS_TICKET_Service>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Atualização do serviço do ticket para <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    sr_Cyrl:
+      Body: 'Здраво <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        сервис тикета [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        је промењен на <OTRS_TICKET_Service>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Промена сервиса тикета на <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    sr_Latn:
+      Body: 'Zdravo <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        servis tiketa [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        je promenjen na <OTRS_TICKET_Service>.
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: 'Promena servisa tiketa na <OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+    zh_CN:
+      Body: '您好 <OTRS_NOTIFICATION_RECIPIENT_UserFirstname>,
+
+
+        票据服务工单服务 [<OTRS_CONFIG_Ticket::Hook><OTRS_CONFIG_Ticket::HookDivider><OTRS_TICKET_TicketNumber>]
+        已被升级为已被更新为 <OTRS_TICKET_Service>。
+
+
+        <OTRS_CONFIG_HttpType>://<OTRS_CONFIG_FQDN>/<OTRS_CONFIG_ScriptAlias>index.pl?Action=AgentTicketZoom;TicketID=<OTRS_TICKET_TicketID>
+
+
+        -- <OTRS_CONFIG_NotificationSenderName>'
+      ContentType: text/plain
+      Subject: '票据服务升级为工单服务更新为<OTRS_TICKET_Service>: <OTRS_TICKET_Title>'
+  Name: Ticket service update notification
+  ValidID: '1'
