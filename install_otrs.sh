@@ -122,6 +122,7 @@ yum -y install \
 "perl(Text::CSV_XS)" \
 "perl(YAML::XS)"
 
+yum -y install mod_ssl
 
 # Criando database
 
@@ -129,22 +130,10 @@ ${MYSQL} -e "create database otrs"
 ${MYSQL} -e "CREATE USER otrs@localhost IDENTIFIED BY '"${MYSQL_NEW_OTRS_PASSWORD}"';"
 ${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 
-
-## Configurando o Bando de dados
-
-#sed -i s/'some-pass'/${MYSQL_NEW_OTRS_PASSWORD}/g /opt/otrs/Kernel/Config.pm
-
-## Deploy database
-
-#$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema.mysql.sql
-#$MYSQL otrs < /opt/otrs/scripts/database/otrs-initial_insert.mysql.sql
-#$MYSQL otrs < /opt/otrs/scripts/database/otrs-schema-post.mysql.sql
-
 ## Iniciando serviço
 
 su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
 su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
-
 
 
 ## Restart httpd
