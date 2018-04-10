@@ -3,6 +3,7 @@
 #debug
 #set -x
 
+cd modules
 
 ## ITSM module
 

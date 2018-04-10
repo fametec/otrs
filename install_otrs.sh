@@ -42,7 +42,25 @@ MYSQL_NEW_OTRS_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};e
 MYSQL="mysql -u root -p${MYSQL_NEW_ROOT_PASSWORD}"
 CURL="curl -d action="/otrs/installer.pl" -d Action="Installer""
 
+cat <<EOF > ~/install_otrs.log
 
+VARIABLES:
+
+FQDN=$FQDN
+ADMINEMAIL=$ADMINEMAIL
+ORGANIZATION=$ORGANIZATION
+MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+DBUSER=$DBUSER
+DBHOST=$DBHOST
+DBNAME=$DBNAME
+SYSTEMID=$SYSTEMID
+MYSQL_NEW_ROOT_PASSWORD=$MYSQL_NEW_ROOT_PASSWORD
+MYSQL_NEW_OTRS_PASSWORD=$MYSQL_NEW_OTRS_PASSWORD
+MYSQL=$MYSQL
+CURL=$CURL
+
+
+EOF
 
 ## Desativar SELINUX
 
@@ -100,9 +118,9 @@ echo "$SECURE_MYSQL"
 
 ## Download e Install OTRS
 
-if [ -e otrs-6.0.6-01.noarch.rpm ]; then
+if [ -e packages/otrs-6.0.6-01.noarch.rpm ]; then
   
-  yum -y install otrs-6.0.6-01.noarch.rpm
+  yum -y install packages/otrs-6.0.6-01.noarch.rpm
 
 else 
   
@@ -174,15 +192,20 @@ su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localh
 
 ## FIM
 
-echo ""
-echo ""
-echo "MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD"
-echo ""
-echo "MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD"
-echo ""
-echo "Login: otrs@localhost"
-echo ""
-echo "Password: $MYSQL_NEW_OTRS_PASSWORD"
-echo ""
+cat <<EOF >> ~/install_otrs.log
+
+
+MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD
+
+MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD
+
+Login: otrs@localhost
+
+Password: $MYSQL_NEW_OTRS_PASSWORD
+
+EOF
+ 
+
+cat ~/install_otrs.log
 
 
