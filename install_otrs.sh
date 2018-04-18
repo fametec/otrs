@@ -16,7 +16,7 @@
 #
 #   Este script está licenciado sob a GPLv3. 
 #
-# MODIFICADO_POR  (DD/MM/YYYY)
+# MODIFICADO_POR  (YYYY-MM-DD)
 #   Eduardo Fraga  2018-04-10 - Criado por Eduardo Fraga <eduardo@fameconsultoria.com.br>
 #                                
 #
@@ -43,9 +43,7 @@ MYSQL="mysql -u root -p${MYSQL_NEW_ROOT_PASSWORD}"
 CURL="curl -d action="/otrs/installer.pl" -d Action="Installer""
 
 cat <<EOF > ~/install_otrs.log
-
 VARIABLES:
-
 FQDN=$FQDN
 ADMINEMAIL=$ADMINEMAIL
 ORGANIZATION=$ORGANIZATION
@@ -58,8 +56,6 @@ MYSQL_NEW_ROOT_PASSWORD=$MYSQL_NEW_ROOT_PASSWORD
 MYSQL_NEW_OTRS_PASSWORD=$MYSQL_NEW_OTRS_PASSWORD
 MYSQL=$MYSQL
 CURL=$CURL
-
-
 EOF
 
 ## Desativar SELINUX
@@ -188,6 +184,35 @@ $CURL -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localh
 ## Set Admin Password
 
 su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
+
+
+
+## Configurar o backup 
+
+cat <<EOF > /etc/cron.daily/backup-otrs.sh
+#!/bin/sh
+
+# Backup OTRS
+
+/opt/otrs/scripts/backup.pl -d /backup
+EXITVALUE=$?
+if [ $EXITVALUE != 0 ]; then
+    /usr/bin/logger -t OTRS "ALERT exited abnormally with [$EXITVALUE]"
+fi
+
+# Apagar backup com mais de 30d
+
+find /backup/ -mtime +30 -delete
+EXITVALUE=$?
+if [ $EXITVALUE != 0 ]; then
+    /usr/bin/logger -t OTRS "ALERT exited abnormally with [$EXITVALUE]"
+fi
+
+exit 0
+
+EOF
+
+chmod +x /etc/cron.daily/backup-otrs.sh
 
 
 ## FIM
