@@ -195,17 +195,17 @@ cat <<EOF > /etc/cron.daily/backup-otrs.sh
 # Backup OTRS
 
 /opt/otrs/scripts/backup.pl -d /backup
-EXITVALUE=$?
-if [ $EXITVALUE != 0 ]; then
-    /usr/bin/logger -t OTRS "ALERT exited abnormally with [$EXITVALUE]"
+EXITVALUE=\$?
+if [ \$EXITVALUE != 0 ]; then
+    /usr/bin/logger -t OTRS "ALERT exited abnormally with [\$EXITVALUE]"
 fi
 
 # Apagar backup com mais de 30d
 
 find /backup/ -mtime +30 -delete
-EXITVALUE=$?
-if [ $EXITVALUE != 0 ]; then
-    /usr/bin/logger -t OTRS "ALERT exited abnormally with [$EXITVALUE]"
+EXITVALUE=\$?
+if [ \$EXITVALUE != 0 ]; then
+    /usr/bin/logger -t OTRS "ALERT exited abnormally with [\$EXITVALUE]"
 fi
 
 exit 0
