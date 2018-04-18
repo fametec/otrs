@@ -34,8 +34,8 @@ DBUSER="otrs"
 DBHOST="127.0.0.1"
 DBNAME="otrs"
 SYSTEMID="`< /dev/urandom tr -dc 0-9 | head -c${1:-2};echo;`"
-MYSQL_NEW_ROOT_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
-MYSQL_NEW_OTRS_PASSWORD="`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
+MYSQL_NEW_ROOT_PASSWORD="t`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
+MYSQL_NEW_OTRS_PASSWORD="p`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
 
 ## CONSTANTES
 
