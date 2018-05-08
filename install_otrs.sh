@@ -64,6 +64,14 @@ sed -i s/enforcing/permissive/g /etc/selinux/config
 
 setenforce 0
 
+
+## Firewalld
+
+firewall-cmd --zone=public --add-service=http
+firewall-cmd --zone=public --add-service=https
+
+
+
 ## Instalar mariadb-server
 
 yum -y install mariadb-server expect epel-release
