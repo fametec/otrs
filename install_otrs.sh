@@ -231,7 +231,7 @@ MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD
 
 MYSQL otrs@localhost: $MYSQL_NEW_OTRS_PASSWORD
 
-Login: otrs@localhost
+Login: root@localhost
 
 Password: $MYSQL_NEW_OTRS_PASSWORD
 
