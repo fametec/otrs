@@ -1,0 +1,98 @@
+FROM docker.io/centos
+
+ENV FQDN "localhost"
+ENV ADMINEMAIL "root@localhost"
+ENV ORGANIZATION "FAMETEC"
+ENV MYSQL_ROOT_PASSWORD "qaz123"
+ENV DBUSER "otrs"
+ENV DBHOST "mariadb-otrs"
+ENV DBNAME "otrs"
+ENV SYSTEMID "12"
+ENV MYSQL_NEW_ROOT_PASSWORD "qaz123"
+ENV MYSQL_NEW_OTRS_PASSWORD "otrs"
+
+RUN yum -y update
+
+RUN yum -y install epel-release
+
+# ADD http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-${VERSION}-01.noarch.rpm /tmp/
+# RUN yum -y install /tmp/otrs-${VERSION}-01.noarch.rpm
+
+
+RUN yum -y install httpd \
+	mod_ssl \
+	mod_perl
+
+RUN yum -y install \
+        "perl(Digest::MD5)" \
+	"perl(DBD::mysql)" \
+	"perl(Crypt::Eksblowfish::Bcrypt)" \
+	"perl(JSON::XS)" \
+	"perl(Mail::IMAPClient)" \
+	"perl(Authen::NTLM)" \
+	"perl(ModPerl::Util)" \
+	"perl(Text::CSV_XS)" \
+	"perl(YAML::XS)" 
+
+RUN yum -y install \
+	"perl(Archive::Tar)" \
+	"perl(Archive::Zip)" \
+	"perl(Crypt::SSLeay)" \
+	"perl(Date::Format)" \
+	"perl(DateTime)" \
+	"perl(DBD::Pg)" \
+	"perl(Encode::HanExtra)" \
+	"perl(IO::Socket::SSL)" \
+	"perl(Authen::SASL)" \
+	"perl(Net::DNS)" \
+	"perl(Template)" \
+	"perl(Template::Stash::XS)" \
+	"perl(XML::LibXML)" \
+	"perl(XML::LibXSLT)" \
+	"perl(XML::Parser)" \
+	"perl(Net::LDAP)"
+	
+
+#ADD otrs-*.rpm /tmp/
+
+#Download from http://ftp.otrs.org/pub/otrs/otrs-6.0.16.tar.gz /tmp/
+
+ADD otrs-6.0.16 /opt/otrs
+
+#RUN yum -y install /tmp/otrs-*.rpm
+
+RUN useradd -d /opt/otrs -c 'OTRS user' otrs
+
+RUN usermod -G apache otrs
+
+RUN cp /opt/otrs/Kernel/Config.pm.dist /opt/otrs/Kernel/Config.pm
+
+RUN perl -cw /opt/otrs/bin/cgi-bin/index.pl && perl -cw /opt/otrs/bin/cgi-bin/customer.pl && perl -cw /opt/otrs/bin/otrs.Console.pl
+
+RUN cd /opt/otrs/ && bin/otrs.SetPermissions.pl
+
+#RUN cd /opt/otrs/var/cron && for foo in *.dist; do cp $foo `basename $foo .dist`; done
+
+ADD zzz_otrs.conf /etc/httpd/conf.d/zzz_otrs.conf
+
+ADD entrypoint.sh /
+
+ADD configure.sh /
+
+RUN chmod 755 /entrypoint.sh /configure.sh
+
+EXPOSE 443/tcp 80/tcp
+
+# ENTRYPOINT [ "/entrypoint.sh" ]
+
+# ENTRYPOINT [ "su", "-", "otrs", "-c", "'/opt/otrs/bin/otrs.Daemon.pl start'" ]
+
+ENTRYPOINT [ "httpd", "-D", "FOREGROUND" ]
+
+## Iniciando serviço
+
+# su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
+# su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
+
+
+

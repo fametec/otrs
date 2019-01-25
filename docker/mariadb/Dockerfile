@@ -16,6 +16,9 @@ RUN { \
 	echo 'innodb_log_file_size = 256M'; \
 	echo 'character-set-server = utf8'; \
 	echo 'collation-server     = utf8_general_ci'; \
+	echo '--no-defaults \'; \
+	echo '--log-error \'; \
+	echo '--key-buffer	   = 50M'; \
         echo; \
     } >> /etc/mysql/conf.d/otrs.cnf
 
