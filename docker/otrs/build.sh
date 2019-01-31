@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker build --rm -t fameconsultoria/otrs:latest .
+docker build --rm -t fametec/otrs:latest .
 
