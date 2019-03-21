@@ -1,0 +1,22 @@
+version: '3.2'
+services:
+  otrs: 
+    image: fametec/otrs:latest
+    container_name: otrs
+    ports:
+    - 8080:80
+    - 8443:443
+    volumes:
+    - otrs-volume:/opt/otrs:rw
+    depends_on:
+    - mariadb-otrs
+  mariadb-otrs:
+    image: fametec/mariadb-otrs:latest
+    container_name: mariadb-otrs
+    ports:
+    - 3306:3306
+    volumes:
+    - mariadb-otrs-volume:/var/lib/mysql:rw
+volumes:
+ otrs-volume:
+ mariadb-otrs-volume:

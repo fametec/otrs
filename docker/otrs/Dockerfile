@@ -48,10 +48,12 @@ RUN apt-get install -qq --no-install-recommends -y \
 	libauthen-ntlm-perl \
 	curl \
 	apache2\ 
+	ssl-cert \
 	cron \
 	anacron
 
-ADD otrs-6.0.16 /opt/otrs
+ADD otrs-6.0.17 /opt/otrs 
+# wget -c http://ftp.otrs.org/pub/otrs/otrs-6.0.17.tar.gz
 
 RUN perl /opt/otrs/bin/otrs.CheckModules.pl
 
@@ -71,6 +73,9 @@ RUN a2enmod perl \
 	&& a2enmod filter \
 	&& a2enmod headers
 
+RUN a2ensite default-ssl \
+	&& a2enmod ssl
+
 RUN /opt/otrs/bin/otrs.SetPermissions.pl
 
 ADD *.sh /
@@ -82,6 +87,6 @@ RUN chmod 755 /entrypoint.sh /configure.sh
 
 VOLUME ["/opt/otrs/"]
 
-EXPOSE 80 443
+EXPOSE 80/tcp 443/tcp
 
 CMD ["/entrypoint.sh" ]
