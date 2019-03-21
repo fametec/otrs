@@ -1,26 +1,11 @@
 #!/bin/bash
 
-#su -c "/opt/otrs/bin/otrs.Daemon.pl start" -s /bin/bash otrs
+/etc/init.d/apache2 start
 
-# su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
+/etc/init.d/cron start
 
-# exec /usr/sbin/apache2 -DFOREGROUND
+su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
 
-NAME=apache2
-DAEMON=/usr/sbin/$NAME
-
-APACHE_CONFDIR=/etc/apache2
-APACHE_ENVVARS=$APACHE_CONFDIR/envvars
-
-export APACHE_CONFDIR APACHE_ENVVARS
-
-
-ENV="env -i LANG=C PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
-APACHE2CTL="$ENV apache2ctl"
-
-
-$APACHE2CTL start
-
+su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1' 
 
 while true; do sleep 1000; done

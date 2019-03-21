@@ -1,4 +1,4 @@
-FROM docker.io/debian:9.6
+FROM docker.io/debian:stable
 
 #ENV LANG pt_BR.utf8
 
@@ -7,21 +7,18 @@ ENV ADMINEMAIL "root@localhost"
 ENV ORGANIZATION "FAMETEC"
 ENV MYSQL_ROOT_PASSWORD "qaz123"
 ENV DBUSER "otrs"
-ENV DBHOST "172.17.0.2"
+ENV DBHOST "mariadb-otrs"
 ENV DBNAME "otrs"
 ENV SYSTEMID "12"
 ENV MYSQL_NEW_ROOT_PASSWORD "qaz123"
 ENV MYSQL_NEW_OTRS_PASSWORD "otrs"
 
-
-
-
 #RUN apt update && apt install -y locales && rm -rf /var/lib/apt/lists/* \
 #    && localedef -i pt_BR -c -f UTF-8 -A /usr/share/locale/locale.alias pt_BR.UTF-8
 
-RUN apt update && apt -y update
+RUN apt-get update && apt-get -y update
 
-RUN apt install -y \
+RUN apt-get install -qq --no-install-recommends -y \
 	libapache2-mod-perl2 \
 	libdbd-mysql-perl \
 	libtimedate-perl \
@@ -37,10 +34,12 @@ RUN apt install -y \
 	libxml-libxml-perl \
 	libxml-libxslt-perl \
 	libyaml-perl \
+	libyaml-libyaml-perl \
 	libarchive-zip-perl \
 	libcrypt-eksblowfish-perl \
 	libencode-hanextra-perl \
 	libmail-imapclient-perl \
+	libauthen-sasl-perl \
 	libtemplate-perl \
 	libcrypt-ssleay-perl \
 	libdatetime-perl \
@@ -48,9 +47,10 @@ RUN apt install -y \
 	libdbd-pg-perl \
 	libauthen-ntlm-perl \
 	curl \
-	apache2 
+	apache2\ 
+	cron \
+	anacron
 
-	
 ADD otrs-6.0.16 /opt/otrs
 
 RUN perl /opt/otrs/bin/otrs.CheckModules.pl
@@ -59,13 +59,10 @@ RUN useradd -d /opt/otrs -c 'OTRS user' otrs \
 	&& usermod -G www-data otrs
 
 ADD Config.pm /opt/otrs/Kernel/Config.pm
-# ADD RUN cp /opt/otrs/Kernel/Config.pm.dist /opt/otrs/Kernel/Config.pm
 
 RUN perl -cw /opt/otrs/bin/cgi-bin/index.pl \
 	&& perl -cw /opt/otrs/bin/cgi-bin/customer.pl \
 	&& perl -cw /opt/otrs/bin/otrs.Console.pl
-
-# RUN ln -s /opt/otrs/scripts/apache2-httpd.include.conf /etc/apache2/sites-enabled/zzz_otrs.conf
 
 ADD zzz_otrs.conf /etc/apache2/sites-enabled/zzz_otrs.conf
 
@@ -78,8 +75,13 @@ RUN /opt/otrs/bin/otrs.SetPermissions.pl
 
 ADD *.sh /
 
+RUN cd /opt/otrs/var/cron \
+	&& for foo in *.dist; do mv $foo `basename $foo .dist`; done 
+
 RUN chmod 755 /entrypoint.sh /configure.sh
+
+VOLUME ["/opt/otrs/"]
 
 EXPOSE 80 443
 
-CMD [ "apache2ctl", "-d", "/etc/apache2", "-D", "FOREGROUND" ]
+CMD ["/entrypoint.sh" ]
