@@ -1,4 +1,4 @@
-version: '3.2'
+version: '3.5'
 services:
   otrs: 
     image: fametec/otrs:latest
@@ -10,6 +10,9 @@ services:
     - otrs-volume:/opt/otrs:rw
     depends_on:
     - mariadb-otrs
+    networks: 
+    - frontend
+    - backend
   mariadb-otrs:
     image: fametec/mariadb-otrs:latest
     container_name: mariadb-otrs
@@ -17,6 +20,13 @@ services:
     - 3306:3306
     volumes:
     - mariadb-otrs-volume:/var/lib/mysql:rw
+    networks: 
+    - backend
+
 volumes:
  otrs-volume:
  mariadb-otrs-volume:
+
+networks:
+ frontend:
+ backend:
