@@ -29,9 +29,9 @@
 
 VERSION="6.0.17"
 LOGS="install_otrs.log"
-FQDN="suporte.eftech.com.br"
-ADMINEMAIL="suporte@eftech.com.br"
-ORGANIZATION="EF-TECH"
+FQDN="suporte.fametec.com.br"
+ADMINEMAIL="suporte@fametec.com.br"
+ORGANIZATION="FAMETEC"
 MYSQL_ROOT_PASSWORD=''
 DBUSER="otrs"
 DBHOST="127.0.0.1"
