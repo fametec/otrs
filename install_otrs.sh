@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# versao 0.1
+# versao 0.2
 #
 # NOME
 #   install_otrs.sh
@@ -18,20 +18,24 @@
 #
 # MODIFICADO_POR  (YYYY-MM-DD)
 #   Eduardo Fraga  2018-04-10 - Criado por Eduardo Fraga <eduardo@fameconsultoria.com.br>
+#   Eduardo Fraga  2019-03-02 - Re-factory por Eduardo Fraga <eduardo@fameconsultoria.com.br>
 #                                
 #
 
 #debug
 # set -x
 
-## VARIAVEIS
+## VARIABLES
 
+VERSION="6.0.17"
+LOGS="install_otrs.log"
 FQDN="suporte.eftech.com.br"
 ADMINEMAIL="suporte@eftech.com.br"
 ORGANIZATION="EF-TECH"
 MYSQL_ROOT_PASSWORD=''
 DBUSER="otrs"
 DBHOST="127.0.0.1"
+DBPORT=3306
 DBNAME="otrs"
 SYSTEMID="`< /dev/urandom tr -dc 0-9 | head -c${1:-2};echo;`"
 MYSQL_NEW_ROOT_PASSWORD="t`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};echo;`"
@@ -42,7 +46,9 @@ MYSQL_NEW_OTRS_PASSWORD="p`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-32};
 MYSQL="mysql -u root -p${MYSQL_NEW_ROOT_PASSWORD}"
 CURL="curl -d action="/otrs/installer.pl" -d Action="Installer""
 
-cat <<EOF > ~/install_otrs.log
+functionLog () { 
+
+cat <<EOF > $LOGS
 VARIABLES:
 FQDN=$FQDN
 ADMINEMAIL=$ADMINEMAIL
@@ -58,27 +64,43 @@ MYSQL=$MYSQL
 CURL=$CURL
 EOF
 
-## Desativar SELINUX
-
-sed -i s/enforcing/permissive/g /etc/selinux/config
-
-setenforce 0
-
-## FIREWALLD
-
-firewall-cmd --zone=public --add-service=https --permanent
-firewall-cmd --zone=public --add-service=http --permanent
+}
 
 
+functionDisableSELinux () {
 
-## Instalar mariadb-server
+    sed -i s/enforcing/permissive/g /etc/selinux/config
+    setenforce 0
 
-yum -y install mariadb-server expect epel-release
+}
 
+functionEnableFirewall () {
+    
+    firewall-cmd --zone=public --add-service=https --permanent
+    firewall-cmd --zone=public --add-service=http --permanent
 
-## Configurar mysql
+    systemctl enable --now firewalld
 
-cat <<EOF > /etc/my.cnf.d/zotrs.cnf
+}
+
+functionDisableFirewall () {
+
+    systemctl disable --now firewalld
+
+}
+
+functionInstallDataBase () {
+
+    yum -y install \
+	mariadb-server \
+	expect \
+	epel-release
+
+}
+
+functionConfigDataBase () {
+
+    cat <<EOF > /etc/my.cnf.d/zotrs.cnf
 [mysqld]
 max_allowed_packet   = 64M
 query_cache_size     = 32M
@@ -87,13 +109,13 @@ character-set-server = utf8
 collation-server     = utf8_general_ci
 EOF
 
-rm -rf /var/lib/mysql/ib*
+    rm -rf /var/lib/mysql/ib*
 
-## Restart do mysql
+    systemctl restart mariadb
 
-systemctl restart mariadb
+} 
 
-## Configuração de segurança do banco
+functionSecureDataBase () {
 
 SECURE_MYSQL=$(expect -c "
 set timeout 10
@@ -119,49 +141,53 @@ expect eof
 
 echo "$SECURE_MYSQL"
 
-## Download e Install OTRS
-
-if [ -e packages/otrs-6.0.6-01.noarch.rpm ]; then
-  
-  yum -y install packages/otrs-6.0.6-01.noarch.rpm
-
-else 
-  
-  yum -y install http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-6.0.6-01.noarch.rpm
-
-fi
+} 
 
 
-## Dependencias
+functionInstallOTRS () {
 
-yum -y install \
-"perl(Crypt::Eksblowfish::Bcrypt)" \
-"perl(JSON::XS)" \
-"perl(Mail::IMAPClient)" \
-"perl(Authen::NTLM)" \
-"perl(ModPerl::Util)" \
-"perl(Text::CSV_XS)" \
-"perl(YAML::XS)"
 
-yum -y install mod_ssl
+    yum -y install http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-${VERSION}-01.noarch.rpm 
 
-# Criando database
+}
+
+functionInstallDependences () {
+
+    yum -y install \
+	"perl(Crypt::Eksblowfish::Bcrypt)" \
+	"perl(JSON::XS)" \
+	"perl(Mail::IMAPClient)" \
+	"perl(Authen::NTLM)" \
+	"perl(ModPerl::Util)" \
+	"perl(Text::CSV_XS)" \
+	"perl(YAML::XS)"
+
+    yum -y install mod_ssl
+
+}
+
+
+functionCreateDataBase () {
 
 ${MYSQL} -e "create database otrs"
 ${MYSQL} -e "CREATE USER otrs@localhost IDENTIFIED BY '"${MYSQL_NEW_OTRS_PASSWORD}"';"
 ${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 
-## Iniciando serviço
+
+}
+
+functionStartOtrs () {
 
 su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
 su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
 
-
-## Restart httpd
-
-systemctl enable httpd
+systemctl enable --now httpd
 systemctl restart httpd
 
+}
+
+
+functionInstallWebGui () {
 
 ## CURL 
 
@@ -187,16 +213,17 @@ $CURL -d Subaction="ConfigureMail" -d SystemID=$SYSTEMID FQDN=$FQDN -d AdminEmai
 $CURL -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localhost/otrs/installer.pl
 
 
+} 
 
-## Set Admin Password
+functionSetPassword () {
 
 su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
 
+}
 
+functionBackupJob () {
 
-## Configurar o backup 
-
-cat <<EOF > /etc/cron.daily/backup-otrs.sh
+    cat <<EOF > /etc/cron.daily/backup-otrs.sh
 #!/bin/sh
 
 # Backup OTRS
@@ -219,13 +246,16 @@ exit 0
 
 EOF
 
-chmod +x /etc/cron.daily/backup-otrs.sh
+    chmod +x /etc/cron.daily/backup-otrs.sh
+
+} 
 
 
-## FIM
+functionShowCredentials () {
 
-cat <<EOF >> ~/install_otrs.log
+  local SHOW="
 
+===================================================
 
 MYSQL root@localhost: $MYSQL_NEW_ROOT_PASSWORD
 
@@ -235,9 +265,51 @@ Login: root@localhost
 
 Password: $MYSQL_NEW_OTRS_PASSWORD
 
-EOF
+===================================================
+
+";
+
+  echo "$SHOW"
+
+  echo "$SHOW" >> $LOGS
+
+}
+
+
+
+
+
  
 
-cat ~/install_otrs.log
+EXECUTE="functionLog 
+functionDisableSELinux
+functionDisableFirewall
+functionInstallDataBase
+functionConfigDataBase
+functionSecureDataBase
+functionCreateDataBase
+functionInstallDependences
+functionInstallOTRS
+functionStartOtrs
+functionInstallWebGui
+functionSetPassword
+functionBackupJob"
+
+
+for job in $EXECUTE; do
+
+  echo "Run $job... "
+
+  $job >> $LOGS 2>&1
+
+  if [ $? -eq 0 ]; then
+    echo "ok" 
+  else 
+    echo "fail" 
+  fi
+done
+
+functionShowCredentials 
+
 
 
