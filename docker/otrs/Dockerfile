@@ -52,7 +52,11 @@ RUN apt-get install -qq --no-install-recommends -y \
 	cron \
 	anacron
 
-ADD otrs-6.0.18 /opt/otrs 
+# ADD otrs-6.0.18 /opt/otrs 
+ADD http://ftp.otrs.org/pub/otrs/otrs-6.0.18.tar.gz / 
+
+RUN tar -zxvf /otrs-6.0.18.tar.gz -C /opt && mv /opt/otrs-6.0.18 /opt/otrs
+
 # wget -c http://ftp.otrs.org/pub/otrs/otrs-6.0.18.tar.gz
 
 RUN perl /opt/otrs/bin/otrs.CheckModules.pl
@@ -80,16 +84,12 @@ RUN /opt/otrs/bin/otrs.SetPermissions.pl
 
 ADD *.sh /
 
+ADD otrs-cron /etc/cron.d/otrs-cron 
+
 RUN cd /opt/otrs/var/cron \
 	&& for foo in *.dist; do mv $foo `basename $foo .dist`; done 
 
-
-RUN { \
-        echo '*/5 * * * * otrs /opt/otrs/bin/otrs.Daemon.pl start > /var/log/cron.log 2>&1';\
-        echo; \
-    } >> /etc/cron.d/otrs-cron 
-
-RUN chmod 755 /etc/cron.d/otrs-cron /entrypoint.sh /configure.sh /install_modules.sh
+RUN chmod 755 /etc/cron.d/otrs-cron /entrypoint.sh /install_modules.sh /secure_mode.sh
 
 VOLUME ["/opt/otrs/"]
 

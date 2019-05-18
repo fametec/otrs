@@ -1,0 +1,1 @@
+*/5 * * * * otrs /opt/otrs/bin/otrs.Daemon.pl start > /var/log/cron.log 2>&1
