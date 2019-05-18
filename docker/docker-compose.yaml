@@ -1,32 +1,71 @@
 version: '3.5'
 services:
+#
+# OTRS
+#
   otrs: 
-    image: fametec/otrs:latest
+    image: fametec/otrs:6.0.18
+    restart: always
     container_name: otrs
     ports:
-    - 8080:80
-    - 8443:443
-    volumes:
-    - otrs-volume:/opt/otrs:rw
+    - 30080:80
+    - 30443:443
+#    volumes:
+#    - otrs-volume:/opt/otrs:rw
     depends_on:
     - mariadb-otrs
     networks: 
     - frontend
     - backend
+#
+# MARIADB
+#
   mariadb-otrs:
     image: fametec/mariadb-otrs:latest
     container_name: mariadb-otrs
+    restart: always
     ports:
     - 3306:3306
-    volumes:
-    - mariadb-otrs-volume:/var/lib/mysql:rw
+#    volumes:
+ #   - mariadb-otrs-volume:/var/lib/mysql:rw
     networks: 
     - backend
 
-volumes:
- otrs-volume:
- mariadb-otrs-volume:
+# 
+# Grafana
+#
+  grafana:
+    image: grafana/grafana
+    restart: always
+    container_name: grafana
+    depends_on:
+    - mariadb-otrs
+    ports:
+    - 3000:3000
+    networks: 
+    - backend
+    - frontend
+    environment:
+      GF_SERVER_ROOT_URL: https://grafana.fametec.com.br
+      GF_SECURITY_ADMIN_PASSWORD: secret
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel
+#
+# PORTAINER
+#
+  portainer:
+    image: portainer/portainer
+    container_name: portainer
+    ports: 
+    - 9000:9000
+    volumes: 
+    - /var/run/docker.sock:/var/run/docker.sock
+#    - portainer_data:/data 
+
+#volumes:
+#  otrs-volume:
+#  mariadb-otrs-volume:
+#  portainer_data:
 
 networks:
- frontend:
- backend:
+  frontend:
+  backend:
