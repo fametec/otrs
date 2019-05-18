@@ -51,7 +51,7 @@ fi
 
 if [ ! -e Survey-6.0.11.opm ]; then 
 
-  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/packages/Survey-6.0.11.opm'
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/packages/:Survey-6.0.11.opm'
 
 else
 
