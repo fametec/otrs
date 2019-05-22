@@ -2,7 +2,7 @@
 
 set -x
 
-CURL="curl -d action="/otrs/installer.pl" -d Action="Installer""
+CURL="curl -sSL -d action="/otrs/installer.pl" -d Action="Installer""
 
 ## CURL 
 
@@ -16,7 +16,7 @@ $CURL -d Subaction="Start" -d submit="Accept license and continue" http://localh
 $CURL -d Subaction="DB" -d DBType="mysql" -d DBInstallType="UseDB" -d submit="FormDBSubmit" http://localhost/otrs/installer.pl
 
 # passo 4
-$CURL -d Subaction="DBCreate" -d DBType="mysql" -d InstallType="UseDB" -d DBUser=$DBUSER -d DBPassword="$MYSQL_NEW_OTRS_PASSWORD" -d DBHost=$DBHOST -d DBName=$DBNAME -d submit="FormDBSubmit" http://localhost/otrs/installer.pl 
+$CURL -d Subaction="DBCreate" -d DBType="mysql" -d InstallType="UseDB" -d DBUser=$MYSQL_USER -d DBPassword="$MYSQL_PASSWORD" -d DBHost=$MYSQL_HOST -d DBName=$MYSQL_DATABASE -d submit="FormDBSubmit" http://localhost/otrs/installer.pl 
 
 # passo 5
 $CURL -d Subaction="System" -d submit="Submit" http://localhost/otrs/installer.pl
@@ -30,5 +30,5 @@ $CURL -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localh
 
 ## Set Admin Password
 
-su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_NEW_OTRS_PASSWORD"
+su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_PASSWORD"
 

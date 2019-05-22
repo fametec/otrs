@@ -10,6 +10,12 @@ services:
     ports:
     - 30080:80
     - 30443:443
+    environment: 
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: otrs
+      MYSQL_USER: otrs
+      MYSQL_PASSWORD: otrs
+      MYSQL_HOST: mariadb-otrs
 #    volumes:
 #    - otrs-volume:/opt/otrs:rw
     depends_on:
@@ -26,6 +32,10 @@ services:
     restart: always
     ports:
     - 3306:3306
+    environment: 
+      MYSQL_DATABASE: otrs
+      MYSQL_USER: otrs
+      MYSQL_PASSWORD: otrs
 #    volumes:
 #    - mariadb-otrs-volume:/var/lib/mysql:rw
     networks: 

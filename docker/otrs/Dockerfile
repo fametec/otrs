@@ -5,13 +5,11 @@ FROM docker.io/debian:stable
 ENV FQDN "localhost"
 ENV ADMINEMAIL "root@localhost"
 ENV ORGANIZATION "FAMETEC"
-ENV MYSQL_ROOT_PASSWORD "qaz123"
-ENV DBUSER "otrs"
-ENV DBHOST "mariadb-otrs"
-ENV DBNAME "otrs"
+ENV MYSQL_DATABASE otrs
+ENV MYSQL_USER otrs
+ENV MYSQL_PASSWORD otrs
+ENV MYSQL_HOST mariadb-otrs
 ENV SYSTEMID "12"
-ENV MYSQL_NEW_ROOT_PASSWORD "qaz123"
-ENV MYSQL_NEW_OTRS_PASSWORD "otrs"
 
 #RUN apt update && apt install -y locales && rm -rf /var/lib/apt/lists/* \
 #    && localedef -i pt_BR -c -f UTF-8 -A /usr/share/locale/locale.alias pt_BR.UTF-8
@@ -89,7 +87,7 @@ ADD otrs-cron /etc/cron.d/otrs-cron
 RUN cd /opt/otrs/var/cron \
 	&& for foo in *.dist; do mv $foo `basename $foo .dist`; done 
 
-RUN chmod 755 /etc/cron.d/otrs-cron /entrypoint.sh /install_modules.sh /secure_mode.sh
+RUN chmod 755 /etc/cron.d/otrs-cron /entrypoint.sh /install_modules.sh /secure_mode.sh /configure.sh
 
 VOLUME ["/opt/otrs/"]
 
