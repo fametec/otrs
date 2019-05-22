@@ -27,7 +27,7 @@ services:
     ports:
     - 3306:3306
 #    volumes:
- #   - mariadb-otrs-volume:/var/lib/mysql:rw
+#    - mariadb-otrs-volume:/var/lib/mysql:rw
     networks: 
     - backend
 
@@ -46,7 +46,7 @@ services:
     - backend
     - frontend
     environment:
-      GF_SERVER_ROOT_URL: https://grafana.fametec.com.br
+      GF_SERVER_ROOT_URL: http://grafana.fametec.com.br
       GF_SECURITY_ADMIN_PASSWORD: secret
       GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel
 #

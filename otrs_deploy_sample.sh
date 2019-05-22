@@ -210,12 +210,12 @@ done
 for service in $DEPARTMENTS
 do
 
-    su otrs -s /bin/bash -c "/opt/otrs/bin/otrs.Console.pl Admin::Service::Add --name ${service} --comment ${service}"
+    su otrs -s /bin/bash -c "/opt/otrs/bin/otrs.Console.pl Admin::Service::Add --name ${service} --criticality '2 low' --type 'End User Service' --comment ${service}"
 
     for i in `seq 1 5`
     do
 
-        su otrs -s /bin/bash -c "/opt/otrs/bin/otrs.Console.pl Admin::Service::Add --name subservice_${service}_${i} --parent-name ${service} --comment subservice_${service}_${i}"
+        su otrs -s /bin/bash -c "/opt/otrs/bin/otrs.Console.pl Admin::Service::Add --name subservice_${service}_${i} --parent-name ${service} --criticality '2 low' --type 'End User Service' --comment subservice_${service}_${i}"
 
     done
 
