@@ -190,7 +190,7 @@ do
     for other_department in $DEPARTMENTS
     do
 
-        if [ $itemrole == $other_department  ]
+        if [ "$itemrole" = "$other_department"  ]
         then
 
             su otrs -s /bin/bash -c "/opt/otrs/bin/otrs.Console.pl Admin::Group::RoleLink --role-name role_${itemrole} --group-name group_${itemrole} --permission rw"
