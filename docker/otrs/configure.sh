@@ -2,6 +2,8 @@
 
 # set -x
 
+SYSTEMID=`$(( ( RANDOM % 99 )  + 1 ))`
+
 CURL="curl -sSL -d action="/otrs/installer.pl" -d Action="Installer""
 
 ## CURL 
@@ -22,7 +24,8 @@ $CURL -d Subaction="DBCreate" -d DBType="mysql" -d InstallType="UseDB" -d DBUser
 $CURL -d Subaction="System" -d submit="Submit" http://localhost/otrs/installer.pl
 
 # passo 6
-$CURL -d Subaction="ConfigureMail" -d SystemID=$SYSTEMID FQDN=$FQDN -d AdminEmail=$ADMINEMAIL -d Organization=$ORGANIZATION -d LogModule="Kernel::System::Log::SysLog" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
+$CURL -d Subaction="ConfigureMail" -d SystemID=$SYSTEMID FQDN=$FQDN -d AdminEmail=$ADMINEMAIL -d Organization=$ORGANIZATION -d LogModule="Kernel::System::Log::File" -d 'LogModule::LogFile'="/tmp/otrs.log" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
+# $CURL -d Subaction="ConfigureMail" -d SystemID=$SYSTEMID FQDN=$FQDN -d AdminEmail=$ADMINEMAIL -d Organization=$ORGANIZATION -d LogModule="Kernel::System::Log::SysLog" DefaultLanguage="pt_BR" -d CheckMXRecord="0" -d submit="Submit" http://localhost/otrs/installer.pl
 
 # passo 7
 $CURL -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localhost/otrs/installer.pl

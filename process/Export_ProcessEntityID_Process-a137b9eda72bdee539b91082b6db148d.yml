@@ -1,0 +1,59 @@
+---
+Process:
+  Activities: 
+    A1:
+      ActivityDialogs:
+        - AD1
+      Config:
+        ActivityDialog:
+          1: AD1
+      EntityID: A1
+      Name: Recording the demand
+    A2:
+      ActivityDialogs:
+        - AD2
+        - AD3
+      Config:
+        ActivityDialog:
+          1: AD2
+          2: AD3
+      EntityID: A2
+      Name: Approval
+    A3:
+      ActivityDialogs:
+        - AD4
+        - AD5
+      Config:
+        ActivityDialog:
+          1: AD4
+          2: AD5
+      EntityID: A3
+      Name: Order
+    A4:
+      ActivityDialogs:
+        - AD6
+      Config:
+        ActivityDialog:
+          1: AD6
+      EntityID: A4
+      Name: Incoming
+    A5:
+      ActivityDialogs: []
+      Config: {}
+      EntityID: A5
+      Name: Process complete
+  ChangeTime: 2019-05-23 02:18:41
+  Config:
+  Description: The process to order a book
+  Path: {}
+  StartActivity: ''
+  StartActivityDialog: ''
+  CreateTime: 2019-05-23 02:18:23
+  EntityID: Process-a137b9eda72bdee539b91082b6db148d
+  ID: 8
+  Layout: {}
+  Name: Book ordening
+  State: Active
+  StateEntityID: S1
+  TransitionActions: []
+  Transitions: []

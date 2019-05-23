@@ -7,9 +7,6 @@ services:
     image: fametec/otrs:6.0.18
     restart: always
     container_name: otrs
-    ports:
-    - 30080:80
-    - 30443:443
     environment: 
       MYSQL_RANDOM_ROOT_PASSWORD: 1
       MYSQL_DATABASE: otrs
@@ -20,9 +17,9 @@ services:
 #    - otrs-volume:/opt/otrs:rw
     depends_on:
     - mariadb-otrs
-    networks: 
-    - frontend
+    networks:
     - backend
+    - middle
 #
 # MARIADB
 #
@@ -30,8 +27,6 @@ services:
     image: fametec/mariadb-otrs:latest
     container_name: mariadb-otrs
     restart: always
-    ports:
-    - 3306:3306
     environment: 
       MYSQL_DATABASE: otrs
       MYSQL_USER: otrs
@@ -39,7 +34,7 @@ services:
 #    volumes:
 #    - mariadb-otrs-volume:/var/lib/mysql:rw
     networks: 
-    - backend
+    - backend    
 
 # 
 # Grafana
@@ -50,15 +45,36 @@ services:
     container_name: grafana
     depends_on:
     - mariadb-otrs
-    ports:
-    - 3000:3000
-    networks: 
-    - backend
-    - frontend
     environment:
-      GF_SERVER_ROOT_URL: http://grafana.fametec.com.br
+      GF_SERVER_DOMAIN: localhost:3000
+      GF_SERVER_ROOT_URL: http://localhost:3000/grafana/
+      GF_AUTH_BASIC_ENABLED: "true"
+      GF_AUTH_PROXY_ENABLED: "true"
+      GF_AUTH_PROXY_HEADER_NAME: "X-WEBAUTH-USER"
+      GR_USERS_ALLOW_SIGN_UP: "false"
       GF_SECURITY_ADMIN_PASSWORD: secret
       GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel
+    networks: 
+    - middle
+    - backend
+#
+# Nginx 
+#
+  nginx:
+    image: nginx
+    restart: always
+    container_name: nginx
+    volumes:
+     - ./nginx/:/etc/nginx/:ro
+    ports:
+     - 443:443
+    depends_on: 
+     - otrs
+     - grafana
+    networks: 
+     - frontend
+     - middle
+
 #
 # PORTAINER
 #
@@ -66,7 +82,7 @@ services:
 #    image: portainer/portainer
 #    container_name: portainer
 #    ports: 
-#    - 9000:9000
+#    - 127.0.0.1:9000:9000
 #    volumes: 
 #    - /var/run/docker.sock:/var/run/docker.sock
 #    - portainer_data:/data 
@@ -75,7 +91,7 @@ services:
 #  otrs-volume:
 #  mariadb-otrs-volume:
 #  portainer_data:
-
-networks:
-  frontend:
+networks: 
+  frontend: 
+  middle: 
   backend:
