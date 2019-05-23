@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+# set -x
 
 CURL="curl -sSL -d action="/otrs/installer.pl" -d Action="Installer""
 
@@ -32,3 +32,7 @@ $CURL -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localh
 
 su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_PASSWORD"
 
+
+/secure_mode.sh on
+
+/install_modules.sh
