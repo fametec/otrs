@@ -35,7 +35,7 @@ services:
 #    - mariadb-otrs-volume:/var/lib/mysql:rw
     networks: 
     - backend    
-
+#
 # 
 # Grafana
 #
@@ -74,7 +74,7 @@ services:
     networks: 
      - frontend
      - middle
-
+#
 #
 # PORTAINER
 #
@@ -86,11 +86,17 @@ services:
 #    volumes: 
 #    - /var/run/docker.sock:/var/run/docker.sock
 #    - portainer_data:/data 
-
+#
+#
+# VOLUMES
+#
 #volumes:
 #  otrs-volume:
 #  mariadb-otrs-volume:
 #  portainer_data:
+#
+# NETWORKS
+#
 networks: 
   frontend: 
   middle: 

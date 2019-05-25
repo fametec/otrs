@@ -9,7 +9,6 @@ ENV MYSQL_DATABASE otrs
 ENV MYSQL_USER otrs
 ENV MYSQL_PASSWORD otrs
 ENV MYSQL_HOST mariadb-otrs
-ENV SYSTEMID "12"
 
 #RUN apt update && apt install -y locales && rm -rf /var/lib/apt/lists/* \
 #    && localedef -i pt_BR -c -f UTF-8 -A /usr/share/locale/locale.alias pt_BR.UTF-8
