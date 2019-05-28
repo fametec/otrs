@@ -52,7 +52,9 @@ RUN apt-get install -qq --no-install-recommends -y \
 # ADD otrs-6.0.18 /opt/otrs 
 ADD http://ftp.otrs.org/pub/otrs/otrs-6.0.18.tar.gz / 
 
-RUN tar -zxvf /otrs-6.0.18.tar.gz -C /opt && mv /opt/otrs-6.0.18 /opt/otrs
+RUN tar -zxvf /otrs-6.0.18.tar.gz -C /opt && mv /opt/otrs-6.0.18 /opt/otrs \
+	&& rm -f /otrs-6.0.18.tar.gz
+	
 
 # wget -c http://ftp.otrs.org/pub/otrs/otrs-6.0.18.tar.gz
 
@@ -79,7 +81,7 @@ RUN a2ensite default-ssl \
 
 RUN /opt/otrs/bin/otrs.SetPermissions.pl
 
-ADD *.sh /
+ADD secure_mode.sh configure.sh install_modules.sh entrypoint.sh /
 
 ADD otrs-cron /etc/cron.d/otrs-cron 
 

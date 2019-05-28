@@ -61,11 +61,9 @@ services:
 # Nginx 
 #
   nginx:
-    image: nginx
+    image: fametec/nginx
     restart: always
     container_name: nginx
-    volumes:
-     - ./nginx/:/etc/nginx/:ro
     ports:
      - 443:443
     depends_on: 

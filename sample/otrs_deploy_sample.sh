@@ -1,5 +1,9 @@
 #!/bin/sh
 
+#debug
+set -xv
+
+
 #
 #OTRS 6 (6.0.18)
 #
@@ -138,15 +142,7 @@
 # Maint::WebUploadCache::Cleanup           - Cleanup the upload cache.
 #
 
-DEPARTMENTS="custos
-financeiro
-fiscal
-marketing
-recuros_humanos
-sistemas_projetos
-suporte_infraestrutura
-suporte_sistemas
-suprimentos"
+DEPARTMENTS=$(cat catalogo.txt | cut -d ',' -f1 | sort -u)
 
 
 # Group
@@ -212,10 +208,12 @@ do
 
     su otrs -s /bin/bash -c "/opt/otrs/bin/otrs.Console.pl Admin::Service::Add --name ${service} --criticality '2 low' --type 'End User Service' --comment ${service}"
 
-    for i in `seq 1 5`
+    SUBSERVICES=$(grep $service catalogo.txt | cut -d ',' -f2)
+
+    for subservice in $SUBSERVICES
     do
 
-        su otrs -s /bin/bash -c "/opt/otrs/bin/otrs.Console.pl Admin::Service::Add --name subservice_${service}_${i} --parent-name ${service} --criticality '2 low' --type 'End User Service' --comment subservice_${service}_${i}"
+        su otrs -s /bin/bash -c "/opt/otrs/bin/otrs.Console.pl Admin::Service::Add --name ${subservice} --parent-name ${service} --criticality '2 low' --type 'End User Service' --comment ${subservice}"
 
     done
 
