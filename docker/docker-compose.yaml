@@ -5,7 +5,7 @@ services:
 #
   otrs: 
     image: fametec/otrs:6.0.18
-    restart: always
+    restart: unless-stopped
     container_name: otrs
     environment: 
       MYSQL_RANDOM_ROOT_PASSWORD: 1
@@ -26,7 +26,7 @@ services:
   mariadb-otrs:
     image: fametec/mariadb-otrs:latest
     container_name: mariadb-otrs
-    restart: always
+    restart: unless-stopped
     environment: 
       MYSQL_DATABASE: otrs
       MYSQL_USER: otrs
@@ -41,7 +41,7 @@ services:
 #
   grafana:
     image: grafana/grafana
-    restart: always
+    restart: unless-stopped
     container_name: grafana
     depends_on:
     - mariadb-otrs
@@ -62,7 +62,7 @@ services:
 #
   nginx:
     image: fametec/nginx
-    restart: always
+    restart: unless-stopped
     container_name: nginx
     ports:
      - 443:443
