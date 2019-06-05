@@ -1,0 +1,100 @@
+version: '3.5'
+services:
+#
+# OTRS
+#
+  otrs: 
+    image: fametec/otrs:6.0.18
+    restart: unless-stopped
+    container_name: otrs
+    environment: 
+      POSTGRES_DB: otrs
+      POSTGRES_USER: otrs
+      POSTGRES_PASSWORD: otrs
+      POSTGRES_HOST: postgresql-otrs
+#    volumes:
+#    - otrs-volume:/opt/otrs:rw
+    depends_on:
+    - postgresql-otrs
+    networks:
+    - backend
+    - middle
+#
+# POSTGRESQL
+#
+  postgresql-otrs:
+    image: postgresql:latest
+    container_name: postgresql-otrs
+    restart: unless-stopped
+    environment: 
+      POSTGRES_DB: otrs
+      POSTGRES_USER: otrs
+      POSTGRES_PASSWORD: otrs
+#    volumes:
+#    - postgresql-otrs-volume:/var/lib/mysql:rw
+    networks: 
+    - backend    
+#
+# 
+# Grafana
+#
+  grafana:
+    image: grafana/grafana
+    restart: unless-stopped
+    container_name: grafana
+    depends_on:
+    - postgresql-otrs
+    environment:
+      GF_SERVER_DOMAIN: localhost:3000
+      GF_SERVER_ROOT_URL: http://localhost:3000/grafana/
+      GF_AUTH_BASIC_ENABLED: "true"
+      GF_AUTH_PROXY_ENABLED: "true"
+      GF_AUTH_PROXY_HEADER_NAME: "X-WEBAUTH-USER"
+      GR_USERS_ALLOW_SIGN_UP: "false"
+      GF_SECURITY_ADMIN_PASSWORD: secret
+      GF_INSTALL_PLUGINS: grafana-clock-panel,grafana-simple-json-datasource,grafana-piechart-panel
+    networks: 
+    - middle
+    - backend
+#
+# Nginx 
+#
+  nginx:
+    image: fametec/nginx
+    restart: unless-stopped
+    container_name: nginx
+    ports:
+     - 443:443
+    depends_on: 
+     - otrs
+     - grafana
+    networks: 
+     - frontend
+     - middle
+#
+#
+# PORTAINER
+#
+#  portainer:
+#    image: portainer/portainer
+#    container_name: portainer
+#    ports: 
+#    - 127.0.0.1:9000:9000
+#    volumes: 
+#    - /var/run/docker.sock:/var/run/docker.sock
+#    - portainer_data:/data 
+#
+#
+# VOLUMES
+#
+#volumes:
+#  otrs-volume:
+#  postgresql-otrs-volume:
+#  portainer_data:
+#
+# NETWORKS
+#
+networks: 
+  frontend: 
+  middle: 
+  backend:
