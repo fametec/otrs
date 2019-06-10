@@ -23,7 +23,7 @@ services:
 # POSTGRESQL
 #
   postgresql-otrs:
-    image: postgresql:latest
+    image: postgres:9.6
     container_name: postgresql-otrs
     restart: unless-stopped
     environment: 
