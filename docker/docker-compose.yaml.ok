@@ -25,21 +25,6 @@ services:
     - backend
     - middle
 #
-# POSTGRESQL
-#
-#  db-otrs:
-#    image: postgres:9.6
-#    container_name: db-otrs
-#    restart: unless-stopped
-#    environment: 
-#      POSTGRES_DB: otrs
-#      POSTGRES_USER: otrs
-#      POSTGRES_PASSWORD: otrs
-#    volumes:
-#    - postgresql-otrs-volume:/var/lib/mysql:rw
-#    networks: 
-#    - backend    
-#
 # MARIADB
 #
   db-otrs:
@@ -56,7 +41,7 @@ services:
     - backend    
 #
 # 
-# GRAFANA
+# Grafana
 #
   grafana:
     image: grafana/grafana

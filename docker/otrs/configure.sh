@@ -23,7 +23,7 @@ http://localhost/otrs/installer.pl >> /tmp/${0}.log
 # passo 3
 $CURL \
 -d Subaction="DB" \
--d DBType="mysql" \
+-d DBType="$DB_TYPE" \
 -d DBInstallType="UseDB" \
 -d submit="FormDBSubmit" \
 http://localhost/otrs/installer.pl >> /tmp/${0}.log
@@ -31,12 +31,12 @@ http://localhost/otrs/installer.pl >> /tmp/${0}.log
 # passo 4
 $CURL \
 -d Subaction="DBCreate" \
--d DBType="mysql" \
+-d DBType="$DB_TYPE" \
 -d InstallType="UseDB" \
--d DBUser=$MYSQL_USER \
--d DBPassword="$MYSQL_PASSWORD" \
--d DBHost=$MYSQL_HOST \
--d DBName=$MYSQL_DATABASE \
+-d DBUser=$DB_USER \
+-d DBPassword="$DB_PASSWORD" \
+-d DBHost=$DB_HOST \
+-d DBName=$DB_NAME \
 -d submit="FormDBSubmit" \
 http://localhost/otrs/installer.pl >> /tmp/${0}.log
 
@@ -54,7 +54,7 @@ $CURL \
 -d AdminEmail="$ADMINEMAIL" \
 -d Organization="$ORGANIZATION" \
 -d LogModule="Kernel::System::Log::File" \
--d DefaultLanguage="pt_BR" \
+-d DefaultLanguage="$LANGUAGE" \
 -d CheckMXRecord="0" \
 -d submit="Submit" \
 http://localhost/otrs/installer.pl >> /tmp/${0}.log
@@ -69,7 +69,7 @@ http://localhost/otrs/installer.pl >> /tmp/${0}.log
 
 ## Set Admin Password
 
-su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $MYSQL_PASSWORD --no-ansi --quiet"
+su - otrs -c "/opt/otrs/bin/otrs.Console.pl Admin::User::SetPassword root@localhost $DB_PASSWORD --no-ansi --quiet"
 
 ## Enable Secure Mode
 

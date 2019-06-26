@@ -1,14 +1,14 @@
 FROM docker.io/debian:stable
 
-#ENV LANG pt_BR.utf8
-
+ENV LANGUAGE pt_BR
 ENV FQDN "localhost"
 ENV ADMINEMAIL "root@localhost"
 ENV ORGANIZATION "FAMETEC"
-ENV MYSQL_DATABASE otrs
-ENV MYSQL_USER otrs
-ENV MYSQL_PASSWORD otrs
-ENV MYSQL_HOST mariadb-otrs
+ENV DB_TYPE mysql
+ENV DB_NAME otrs
+ENV DB_USER otrs
+ENV DB_PASSWORD otrs
+ENV DB_HOST db-otrs
 
 #RUN apt update && apt install -y locales && rm -rf /var/lib/apt/lists/* \
 #    && localedef -i pt_BR -c -f UTF-8 -A /usr/share/locale/locale.alias pt_BR.UTF-8
@@ -50,10 +50,10 @@ RUN apt-get install -qq --no-install-recommends -y \
 	anacron
 
 # ADD otrs-6.0.18 /opt/otrs 
-ADD http://ftp.otrs.org/pub/otrs/otrs-6.0.18.tar.gz / 
+ADD http://ftp.otrs.org/pub/otrs/otrs-6.0.19.tar.gz / 
 
-RUN tar -zxvf /otrs-6.0.18.tar.gz -C /opt && mv /opt/otrs-6.0.18 /opt/otrs \
-	&& rm -f /otrs-6.0.18.tar.gz
+RUN tar -zxvf /otrs-6.0.19.tar.gz -C /opt && mv /opt/otrs-6.0.19 /opt/otrs \
+	&& rm -f /otrs-6.0.19.tar.gz
 	
 
 # wget -c http://ftp.otrs.org/pub/otrs/otrs-6.0.18.tar.gz

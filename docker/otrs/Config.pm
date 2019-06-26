@@ -29,7 +29,7 @@ sub Load {
     # ---------------------------------------------------- #
 
     # The database host
-    $Self->{DatabaseHost} = 'mariadb-otrs';
+    $Self->{DatabaseHost} = 'db-otrs';
 
     # The database name
     $Self->{Database} = 'otrs';

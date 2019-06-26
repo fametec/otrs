@@ -5,7 +5,7 @@
 
 itsm(){
 	
-	su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/itsm/bundle6/:ITSM-6.0.18.opm --no-ansi --quiet'
+	su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/itsm/bundle6/:ITSM-6.0.19.opm --no-ansi --quiet'
 
 }
 	
