@@ -7,29 +7,29 @@ cd modules
 
 ## ITSM module
 
-if [ ! -e ITSM-6.0.18.opm ]; then 
+if [ ! -e ITSM-6.0.21.opm ]; then 
   
-  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/itsm/bundle6/:ITSM-6.0.18.opm'
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/itsm/bundle6/:ITSM-6.0.21.opm'
 
 else
 
-  cp ITSM-6.0.18.opm /tmp/
+  cp ITSM-6.0.21.opm /tmp/
 
-  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.18.opm'
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/ITSM-6.0.21.opm'
 
 fi
 
 ## FAQ 
 
-if [ ! -e FAQ-6.0.18.opm ]; then
+if [ ! -e FAQ-6.0.21.opm ]; then
 
-  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/packages/:FAQ-6.0.18.opm'
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install http://ftp.otrs.org/pub/otrs/packages/:FAQ-6.0.21.opm'
 
 else 
 
-  cp FAQ-6.0.18.opm /tmp/
+  cp FAQ-6.0.21.opm /tmp/
 
-  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/FAQ-6.0.18.opm'
+  su - otrs -c '/opt/otrs/bin/otrs.Console.pl Admin::Package::Install /tmp/FAQ-6.0.21.opm'
 
 fi
 
