@@ -1,4 +1,4 @@
-# ((OTRS)) Community Edition 6.0.20
+# ((OTRS)) Community Edition 6.0.21
 
 
 ## require MariaDB
