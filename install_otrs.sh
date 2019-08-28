@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# versao 0.2
+# versao 0.3
 #
 # NOME
 #   install_otrs.sh
@@ -19,6 +19,7 @@
 # MODIFICADO_POR  (YYYY-MM-DD)
 #   Eduardo Fraga  2018-04-10 - Criado por Eduardo Fraga <eduardo@fameconsultoria.com.br>
 #   Eduardo Fraga  2019-03-02 - Re-factory por Eduardo Fraga <eduardo@fameconsultoria.com.br>
+#   Eduardo Fraga  2019-08-27 - Upgrade to 6.0.21
 #                                
 #
 
@@ -27,7 +28,7 @@
 
 ## VARIABLES
 
-VERSION="6.0.19"
+VERSION="6.0.21"
 LOGS="install_otrs.log"
 FQDN="suporte.fametec.com.br"
 ADMINEMAIL="suporte@fametec.com.br"
