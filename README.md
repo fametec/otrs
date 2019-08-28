@@ -13,7 +13,7 @@
 
 ## VARIABLES
 
-- VERSION="6.0.17"
+- VERSION="6.0.21"
 - LOGS="install_otrs.log"
 - FQDN="suporte.fametec.com.br"
 - ADMINEMAIL="suporte@fametec.com.br"
@@ -29,7 +29,7 @@
 
   
 
-# ((OTRS)) Community Edition 6.0.18
+# ((OTRS)) Community Edition 6.0.21
 
 
 ## require MariaDB
