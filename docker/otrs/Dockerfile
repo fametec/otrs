@@ -50,10 +50,10 @@ RUN apt-get install -qq --no-install-recommends -y \
 	anacron
 
 # ADD otrs-6.0.18 /opt/otrs 
-ADD http://ftp.otrs.org/pub/otrs/otrs-6.0.19.tar.gz / 
+ADD http://ftp.otrs.org/pub/otrs/otrs-6.0.21.tar.gz / 
 
-RUN tar -zxvf /otrs-6.0.19.tar.gz -C /opt && mv /opt/otrs-6.0.19 /opt/otrs \
-	&& rm -f /otrs-6.0.19.tar.gz
+RUN tar -zxvf /otrs-6.0.21.tar.gz -C /opt && mv /opt/otrs-6.0.21 /opt/otrs \
+	&& rm -f /otrs-6.0.21.tar.gz
 	
 
 # wget -c http://ftp.otrs.org/pub/otrs/otrs-6.0.18.tar.gz
