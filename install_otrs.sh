@@ -28,7 +28,7 @@
 
 ## VARIABLES
 
-VERSION="6.0.21"
+VERSION="6.0.24"
 LOGS="install_otrs.log"
 FQDN="suporte.fametec.com.br"
 ADMINEMAIL="suporte@fametec.com.br"
