@@ -4,17 +4,16 @@ services:
 # OTRS
 #
   otrs: 
-    image: fametec/otrs:6.0.18
+    image: fametec/otrs:6.0.28
     restart: unless-stopped
     container_name: otrs
     environment: 
-      MYSQL_RANDOM_ROOT_PASSWORD: 1
-      MYSQL_DATABASE: otrs
-      MYSQL_USER: otrs
-      MYSQL_PASSWORD: otrs
-      MYSQL_HOST: mariadb-otrs
-#    volumes:
-#    - otrs-volume:/opt/otrs:rw
+      DB_NAME: otrs
+      DB_USER: otrs
+      DB_PASSWORD: otrs
+      DB_HOST: mariadb-otrs
+      # volumes:
+      #  - otrs-volume:/opt/otrs:rw
     depends_on:
     - mariadb-otrs
     networks:
@@ -31,8 +30,8 @@ services:
       MYSQL_DATABASE: otrs
       MYSQL_USER: otrs
       MYSQL_PASSWORD: otrs
-#    volumes:
-#    - mariadb-otrs-volume:/var/lib/mysql:rw
+      #    volumes:
+      #    - mariadb-otrs-volume:/var/lib/mysql:rw
     networks: 
     - backend    
 #

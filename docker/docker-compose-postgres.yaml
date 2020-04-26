@@ -1,49 +1,54 @@
 version: '3.5'
 services:
 #
-# OTRS
+# POSTGRESQL
 #
-  otrs: 
-    image: fametec/otrs:6.0.18
+  postgres-otrs:
+    image: postgres:9.6
+    container_name: postgres-otrs
     restart: unless-stopped
-    container_name: otrs
     environment: 
       POSTGRES_DB: otrs
       POSTGRES_USER: otrs
       POSTGRES_PASSWORD: otrs
-      POSTGRES_HOST: postgresql-otrs
-#    volumes:
-#    - otrs-volume:/opt/otrs:rw
+      #    volumes:
+      #    - postgresql-otrs-volume:/var/lib/mysql:rw
+    networks: 
+    - backend    
+#
+# OTRS
+#
+  otrs: 
+    build: otrs/.
+    image: fametec/otrs:6.0.28
+    restart: unless-stopped
+    container_name: otrs
+    environment:
+      LANGUAGE: pt_BR
+      FQDN: "localhost"
+      ADMINEMAIL: "root@localhost"
+      ORGANIZATION: "FAMETEC"
+      DB_TYPE: postgres 
+      DB_NAME: otrs
+      DB_USER: otrs
+      DB_PASSWORD: otrs
+      DB_HOST: postgres-otrs
+      #    volumes:
+      #    - otrs-volume:/opt/otrs:rw
     depends_on:
-    - postgresql-otrs
+    - postgres-otrs
     networks:
     - backend
     - middle
 #
-# POSTGRESQL
-#
-  postgresql-otrs:
-    image: postgres:9.6
-    container_name: postgresql-otrs
-    restart: unless-stopped
-    environment: 
-      POSTGRES_DB: otrs
-      POSTGRES_USER: otrs
-      POSTGRES_PASSWORD: otrs
-#    volumes:
-#    - postgresql-otrs-volume:/var/lib/mysql:rw
-    networks: 
-    - backend    
-#
-# 
-# Grafana
+# GRAFANA
 #
   grafana:
     image: grafana/grafana
     restart: unless-stopped
     container_name: grafana
     depends_on:
-    - postgresql-otrs
+    - postgres-otrs
     environment:
       GF_SERVER_DOMAIN: localhost:3000
       GF_SERVER_ROOT_URL: http://localhost:3000/grafana/
@@ -57,7 +62,7 @@ services:
     - middle
     - backend
 #
-# Nginx 
+# NGINX
 #
   nginx:
     image: fametec/nginx
