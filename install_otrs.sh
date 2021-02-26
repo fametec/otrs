@@ -254,7 +254,6 @@ ${MYSQL} -e "GRANT ALL on otrs.* TO otrs@localhost;"
 functionStartOtrs () {
 
 su - otrs -c '/opt/otrs/bin/otrs.Daemon.pl start > /dev/null 2>&1'
-su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
 
 systemctl enable --now httpd
 systemctl restart httpd
@@ -289,6 +288,19 @@ $CURL -d Subaction="Finish" -d Skip="0" -d button="Skip this step" http://localh
 
 
 } 
+
+
+
+functionCron () {
+
+    cd /opt/otrs/var/cron
+    
+    for foo in *.dist; do cp $foo `basename $foo .dist`; done
+    
+    su - otrs -c '/opt/otrs/bin/Cron.sh start > /dev/null 2>&1'
+
+
+}
 
 functionSetPassword () {
 
@@ -368,6 +380,7 @@ functionInstallOTRS
 functionStartOtrs
 functionInstallWebGui
 functionSetPassword
+functionCron
 functionBackupJob"
 
 
