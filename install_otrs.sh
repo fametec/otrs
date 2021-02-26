@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# versao 0.3
+# versao 0.4
 #
 # NOME
 #   install_otrs.sh
@@ -20,15 +20,15 @@
 #   Eduardo Fraga  2018-04-10 - Criado por Eduardo Fraga <eduardo@fameconsultoria.com.br>
 #   Eduardo Fraga  2019-03-02 - Re-factory por Eduardo Fraga <eduardo@fameconsultoria.com.br>
 #   Eduardo Fraga  2019-08-27 - Upgrade to 6.0.21
+#   Eduardo Fraga  2020-02-26 - Upgrade to 6.0.30 and Archive project
 #                                
-#
 
 #debug
 # set -x
 
 ## VARIABLES
 
-VERSION="6.0.29"
+VERSION="6.0.30"
 LOGS="install_otrs.log"
 FQDN="suporte.fametec.com.br"
 ADMINEMAIL="suporte@fametec.com.br"
@@ -148,20 +148,66 @@ echo "$SECURE_MYSQL"
 functionInstallOTRS () {
 
 
-    yum -y install http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-${VERSION}-01.noarch.rpm 
+    # yum -y install http://ftp.otrs.org/pub/otrs/RPMS/rhel/7/otrs-${VERSION}-01.noarch.rpm 
+
+    
+
+	curl -OL https://github.com/fametec/otrs-archived/archive/rel-6_0_30.tar.gz
+	tar -zxvf rel-6_0_30.tar.gz
+	mv otrs-archived-rel-6_0_30 /opt/otrs
+	perl /opt/otrs/bin/otrs.CheckModules.pl
+
+	
+
 
 }
 
 functionInstallDependences () {
 
-    yum -y install \
-	"perl(Crypt::Eksblowfish::Bcrypt)" \
-	"perl(JSON::XS)" \
-	"perl(Mail::IMAPClient)" \
-	"perl(Authen::NTLM)" \
-	"perl(ModPerl::Util)" \
-	"perl(Text::CSV_XS)" \
-	"perl(YAML::XS)"
+
+    yum -y install "perl(Archive::Tar)" \
+    "perl(Archive::Zip)" \
+    "perl(Crypt::Eksblowfish::Bcrypt)" \
+    "perl(Date::Format)" \
+    "perl(DateTime)" \
+    "perl(DateTime::TimeZone)" \
+    "perl(Encode::HanExtra)" \
+    "perl(IO::Socket::SSL)" \
+    "perl(JSON::XS)" \
+    "perl(Mail::IMAPClient)" \
+    "perl(IO::Socket::SSL)" \
+    "perl(Authen::SASL)" \
+    "perl(Authen::NTLM)" \
+    "perl(ModPerl::Util)" \
+    "perl(Moo)" \
+    "perl(Net::DNS)" \
+    "perl(Net::LDAP)" \
+    "perl(Template)" \
+    "perl(Template::Stash::XS)" \
+    "perl(Text::CSV_XS)" \
+    "perl(XML::LibXML)" \
+    "perl(XML::LibXSLT)" \
+    "perl(XML::Parser)" \
+    "perl(YAML::XS)" \
+    "perl(namespace::clean)" \
+    "perl(Sys::Syslog)"
+
+
+
+    yum -y -q install perl-CPAN
+
+    cat <<EOF | perl -MCPAN -e 'shell' 
+yes
+local::lib
+yes
+yes
+exit
+EOF
+
+
+    perl -MCPAN -e 'install Moo'; 
+    echo 'no' | perl -MCPAN -e 'install IO::Socket::SSL';  
+    perl -MCPAN -e 'install Net::SMTP'; 
 
     yum -y install mod_ssl
 
