@@ -160,6 +160,34 @@ functionInstallOTRS () {
 	
 
 
+    useradd -d /opt/otrs -c 'OTRS user' otrs
+
+    usermod -G apache otrs
+
+
+    cp /opt/otrs/Kernel/Config.pm.dist /opt/otrs/Kernel/Config.pm
+
+
+
+    perl -cw /opt/otrs/bin/cgi-bin/index.pl
+
+    perl -cw /opt/otrs/bin/cgi-bin/customer.pl
+
+    perl -cw /opt/otrs/bin/otrs.Console.pl
+
+
+
+    ln -s /opt/otrs/scripts/apache2-httpd.include.conf /etc/httpd/conf.d/zzz_otrs.conf
+
+
+
+    cd /opt/otrs/
+
+    bin/otrs.SetPermissions.pl
+
+
+
+
 }
 
 functionInstallDependences () {
