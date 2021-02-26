@@ -234,7 +234,7 @@ EOF
 
 
     perl -MCPAN -e 'install Moo'; 
-    echo 'no' | perl -MCPAN -e 'install IO::Socket::SSL';  
+    echo 'n' | perl -MCPAN -e 'install IO::Socket::SSL';  
     perl -MCPAN -e 'install Net::SMTP'; 
 
     yum -y install mod_ssl
